@@ -2,8 +2,8 @@ import React from 'react'
 
 function Overall() {
   return (
-    <div className='h-48 border rounded-lg bg-white'>
-        <h1 className='font-poppins font-medium text-lg px-5 my-5 lg:my-6'>Overall Inventory</h1>
+    <div className='h-40 border rounded-lg bg-white'>
+        <h1 className='font-poppins font-medium text-lg px-5 lg:my-3'>Overall Inventory</h1>
         <div className='flex w-full justify-between px-5 h-24 '>
             <div className="categories flex flex-col gap-3">
                 <h2 className='poppins-6 text-[#1570EF]'>Categories</h2>
