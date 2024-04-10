@@ -1,0 +1,8 @@
+li{
+    margin: 30px;
+    
+}
+
+li:hover{
+    cursor: pointer;
+}

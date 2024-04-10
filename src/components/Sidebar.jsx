@@ -7,24 +7,25 @@ import { IoLogoDropbox } from "react-icons/io";
 import { LuClipboardSignature } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
+import './sidebar.css'
 
 function Sidebar() {
   return (
-    <div>
-        <h1>CMS</h1>
-        <ul>
-            <li><IoHomeOutline size={24} className='inline'/>Dashboard</li>
-            <li><LiaLuggageCartSolid size={24} className='inline'/>Inventory</li>
-            <li><IoIosStats size={24} className='inline'/>Reports</li>
-            <li><FaRegUserCircle size={24} className='inline'/>Suppliers</li>
-            <li><IoLogoDropbox size={24} className='inline'/>Orders</li>
-            <li><LuClipboardSignature size={24} className='inline'/>Manage Store</li>
+    <div className='flex flex-col h-full w-full justify-between p-5 border rounded-e-lg bg-white'>
+        <ul className=''>
+        <li className='font-poppins font-medium text-xl text-[#1570EF] pb-10'>CMS</li>
+            <li><IoHomeOutline size={24} className='inline mr-2'/>Dashboard</li>
+            <li><LiaLuggageCartSolid size={24} className='inline mr-2'/>Inventory</li>
+            <li><IoIosStats size={24} className='inline mr-2'/>Reports</li>
+            <li><FaRegUserCircle size={24} className='inline mr-2'/>Suppliers</li>
+            <li><IoLogoDropbox size={24} className='inline mr-2'/>Orders</li>
+            <li><LuClipboardSignature size={24} className='inline mr-2'/>Manage Store</li>
         </ul>
 
         <div>
             <ul>
-                <li><CiSettings size={24} className='inline'/>Settings </li>
-                <li><IoIosLogOut size={24} className='inline'/>Log Out </li>
+                <li><CiSettings size={24} className='inline mr-2'/>Settings </li>
+                <li><IoIosLogOut size={24} className='inline mr-2'/>Log Out </li>
             </ul>
         </div>
     </div>

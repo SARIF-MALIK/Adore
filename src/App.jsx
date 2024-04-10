@@ -1,16 +1,12 @@
 import './App.css'
-import Navbar from './components/Navbar'
-import Products from './components/Products'
-import Sidebar from './components/Sidebar'
+import Home from './components/Home'
 
 function App() {
  
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
-      <Products/>
+      <Home/>
     </>
   )
 }
