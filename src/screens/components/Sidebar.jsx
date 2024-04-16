@@ -12,8 +12,8 @@ import './sidebar.css'
 function Sidebar() {
   return (
     <div className='flex flex-col h-full w-full justify-between p-5 border rounded-e-lg bg-white'>
-        <ul className=''>
-        <li className='font-poppins font-medium text-xl text-[#1570EF] pb-10'>CMS</li>
+        <ul className='poppins-5'>
+        <li className='poppins-6 text-xl text-[#1570EF] pb-10'>CMS</li>
             <li><IoHomeOutline size={24} className='inline mr-2'/>Dashboard</li>
             <li><LiaLuggageCartSolid size={24} className='inline mr-2'/>Inventory</li>
             <li><IoIosStats size={24} className='inline mr-2'/>Reports</li>
@@ -23,7 +23,7 @@ function Sidebar() {
         </ul>
 
         <div>
-            <ul>
+            <ul className='poppins-5'>
                 <li><CiSettings size={24} className='inline mr-2'/>Settings </li>
                 <li><IoIosLogOut size={24} className='inline mr-2'/>Log Out </li>
             </ul>
