@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Products from "./components/Products";
 import Overall from "./components/Overall";
 import Newproduct from "./Newproduct";
+import ListedItem from "./components/ListedItem";
 
 function Home() {
   const [toggle, setToggle] = useState(false);
@@ -23,6 +24,9 @@ function Home() {
         <div>
             <Products toggle={toggle} setToggle={setToggle}/>
         </div>
+        <div>
+        <ListedItem/>
+      </div>
       </div>
    
       <div className="">
@@ -30,6 +34,8 @@ function Home() {
         toggle && <Newproduct/> 
       }
       </div>
+
+
     
     </div>
   );
