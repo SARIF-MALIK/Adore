@@ -4,9 +4,8 @@ import Sidebar from "./components/Sidebar";
 import Products from "./components/Products";
 import Overall from "./components/Overall";
 import Newproduct from "./Newproduct";
-import ListedItem from "./components/ListedItem";
 
-function Home() {
+function Inventory() {
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -24,9 +23,6 @@ function Home() {
         <div>
             <Products toggle={toggle} setToggle={setToggle}/>
         </div>
-        <div>
-        <ListedItem/>
-      </div>
       </div>
    
       <div className="">
@@ -41,4 +37,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Inventory;

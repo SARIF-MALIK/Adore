@@ -1,12 +1,21 @@
 import './App.css'
-import Home from './screens/Home'
+import Dashboard from './screens/Dashboard'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Inventory from './screens/Inventory'
+import ProductDetails from './screens/ProductDetails'
 
 function App() {
  
 
   return (
     <>
-      <Home/>
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<Dashboard/>}/>
+        <Route path='/inventory' element={<Inventory/>}/>
+        <Route path='/inventory/productdetails/' element={<ProductDetails/>}/>
+      </Routes>
+    </Router>
     </>
   )
 }

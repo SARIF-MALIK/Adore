@@ -1,5 +1,6 @@
 import React from "react";
 import { MdFilterList } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function Products({ toggle , setToggle}) {
   return (
@@ -30,8 +31,9 @@ function Products({ toggle , setToggle}) {
             <th className="poppins-4 text-sm text-start">Expiry Date</th>
             <th className="poppins-4 text-sm text-start">Availability</th>
           </tr>
+          
           <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Maggi</td>
+            <td><Link to="/inventory/productdetails/">Maggi</Link></td>
             <td>₹430</td>
             <td>43 Packets</td>
             <td>12 Packets</td>
