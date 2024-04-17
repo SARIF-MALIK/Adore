@@ -6,7 +6,7 @@
     },
     {
         "label": "Oct",
-        "revenue": 35000,
+        "revenue": 45000,
         "profit": 30000
     },
     {
@@ -16,8 +16,8 @@
     },
     {
         "label": "Dec",
-        "revenue": 56000,
-        "profit": 50000
+        "revenue": 76000,
+        "profit": 55000
     },
     {
         "label": "Jan",
@@ -26,12 +26,12 @@
     },
     {
         "label": "Feb",
-        "revenue": 51000,
-        "profit": 52000
+        "revenue": 58000,
+        "profit": 42000
     },
     {
         "label": "Mar",
         "revenue": 38000,
-        "profit": 33000
+        "profit": 50262
     }
 ]

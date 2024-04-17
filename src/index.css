@@ -16,4 +16,9 @@
     .btn {
         @apply w-28 h-10 rounded-lg border-[1px]
     }
+
+    .canva{
+      @apply w-full h-full absolute top-0 left-0 overflow-hidden
+    }
   }
+

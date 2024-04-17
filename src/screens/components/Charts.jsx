@@ -14,17 +14,21 @@ export const Charts = () => {
                             {
                                 label: "Revenue",
                                 data: revenueData.map((data) => data.revenue),
+                                borderColor: 'orange',
+                                backgroundColor: 'orange'
                             },
                             {
                                 label: "profit",
                                 data: revenueData.map((data) => data.profit),
+                                borderColor: 'blue',
+                                backgroundColor: 'blue'
                             },
                         ],
                     }}
                     options={{
                         elements: {
                             line: {
-                                tension: 0.7
+                                tension: 0.5
                             },
                             point: {
                                 radius: 0
@@ -42,7 +46,10 @@ export const Charts = () => {
                                     weight : 'normal',
                                     
                                 },
-                                padding: 20,
+                                padding: {
+                                    top: 10,
+                                    bottom: 50
+                                },
                             },
                             legend: {
                                 display : true, 
@@ -63,8 +70,10 @@ export const Charts = () => {
                                     zeroLineColor: '#ffffff', // Set color of zero grid line
                                 },
                                 ticks: {
-                                    stepSize: 10000, // Set step size for ticks
+                                    stepSize: 20000, // Set step size for ticks
                                 },
+                                min: 20000,
+                                max: 80000,
                             },
                             x: {
                                 grid: {

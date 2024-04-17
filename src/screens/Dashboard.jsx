@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
 import DashContent from "./components/DashContent";
+import ThreeD from "./components/ThreeD";
 
 function Dashboard() {
   return (
@@ -17,8 +18,11 @@ function Dashboard() {
         <div>
           <DashContent/>
         </div>
-        <div className>
+        {/* <div className>
           <Overall />
+        </div> */}
+        <div className="relative">
+          <ThreeD tdPic="/statChart.glb"/>
         </div>
       </div>
     </div>
