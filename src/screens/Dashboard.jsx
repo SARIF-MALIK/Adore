@@ -11,9 +11,9 @@ function Dashboard() {
         <Sidebar />
       </div>
       <div className={`w-10/12 flex flex-col gap-3 px-5 overflow-y-auto `}>
-        <div className>
+        {/* <div className>
           <Navbar />
-        </div>
+        </div> */}
         <div>
           <DashContent/>
         </div>

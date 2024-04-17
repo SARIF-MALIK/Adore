@@ -17,7 +17,7 @@ function Sidebar() {
         <li className='poppins-6 text-xl text-[#1570EF] pb-10'>CMS</li>
             <li><Link to="/"><IoHomeOutline size={24} className='inline mr-2'/>Dashboard</Link></li>
             <li><Link to="/inventory"><LiaLuggageCartSolid size={24} className='inline mr-2'/>Inventory</Link></li>
-            <li><IoIosStats size={24} className='inline mr-2'/>Reports</li>
+            <li><Link to="/reports"><IoIosStats size={24} className='inline mr-2'/>Reports</Link></li>
             <li><FaRegUserCircle size={24} className='inline mr-2'/>Suppliers</li>
             <li><IoLogoDropbox size={24} className='inline mr-2'/>Orders</li>
             <li><LuClipboardSignature size={24} className='inline mr-2'/>Manage Store</li>

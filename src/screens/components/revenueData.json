@@ -1,0 +1,37 @@
+[
+    {
+        "label": "Sep",
+        "revenue": 20000,
+        "profit": 41349
+    },
+    {
+        "label": "Oct",
+        "revenue": 35000,
+        "profit": 30000
+    },
+    {
+        "label": "Nov",
+        "revenue": 25000,
+        "profit": 35000
+    },
+    {
+        "label": "Dec",
+        "revenue": 56000,
+        "profit": 50000
+    },
+    {
+        "label": "Jan",
+        "revenue": 50000,
+        "profit": 53000
+    },
+    {
+        "label": "Feb",
+        "revenue": 51000,
+        "profit": 52000
+    },
+    {
+        "label": "Mar",
+        "revenue": 38000,
+        "profit": 33000
+    }
+]
