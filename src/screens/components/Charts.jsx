@@ -37,7 +37,9 @@ export const Charts = () => {
                                 align : 'start',
                                 text : "Profit & Revenue",
                                 font : {
-                                    size: 20,
+                                    size: 18,
+                                    family : "'Poppins','sans-serif'",
+                                    weight : 'normal',
                                     
                                 },
                                 padding: 20,

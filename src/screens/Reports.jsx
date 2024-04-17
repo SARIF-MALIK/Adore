@@ -4,6 +4,8 @@ import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
 import Overview from "./components/Overview";
 import { Charts } from "./components/Charts";
+import BestSellProduct from "./components/BestSellProduct";
+import BestSellCategory from "./components/BestSellCategory";
 
 function Reports() {
   return (
@@ -17,10 +19,13 @@ function Reports() {
       </div>
       <div className="flex gap-5 justify-between">
         <Overview />
-        <Overview />
+        <BestSellCategory/>
       </div>
       <div>
         <Charts/>
+      </div>
+      <div>
+        <BestSellProduct/>
       </div>
     </div>
   </div>
