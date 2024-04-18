@@ -20,7 +20,7 @@ export default ThreeD
 
 
 export function Model() {
-    const model = useGLTF("/statChart.glb")
+    const model = useGLTF("/assets/statChart.glb")
     const cubeRef = useRef()
     useFrame((state, delta)=>{
         cubeRef.current.rotation.y -= 0.01

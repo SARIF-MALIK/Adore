@@ -1,6 +1,6 @@
 import React from "react";
 import { FiEdit2 } from "react-icons/fi";
-import maggiPic from '../../assets/maggi.jpeg'
+import maggiPic from '/assets/maggi.jpeg'
 
 function ListedItem() {
   return (

@@ -31,7 +31,7 @@ export const Charts = () => {
                                 tension: 0.5
                             },
                             point: {
-                                radius: 0
+                                radius: 1.7
                             }
                         },
                         plugins: {

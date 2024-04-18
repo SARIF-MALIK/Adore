@@ -19,8 +19,8 @@ function Sidebar() {
             <li><Link to="/inventory"><LiaLuggageCartSolid size={24} className='inline mr-2'/>Inventory</Link></li>
             <li><Link to="/reports"><IoIosStats size={24} className='inline mr-2'/>Reports</Link></li>
             <li><Link to="/suppliers"><FaRegUserCircle size={24} className='inline mr-2'/>Suppliers</Link></li>
-            <li><IoLogoDropbox size={24} className='inline mr-2'/>Orders</li>
-            <li><LuClipboardSignature size={24} className='inline mr-2'/>Manage Store</li>
+            <li><Link to="/orders"><IoLogoDropbox size={24} className='inline mr-2'/>Orders</Link></li>
+            <li><Link to="/branch"><LuClipboardSignature size={24} className='inline mr-2'/>Manage Branch</Link></li>
         </ul>
 
         <div>

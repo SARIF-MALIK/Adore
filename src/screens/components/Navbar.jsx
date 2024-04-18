@@ -15,10 +15,11 @@ function Navbar() {
             className="w-full rounded-sm outline-none"
           />
         </div>
-        <div className="flex items-center gap-3 md:gap-10">
+<div className="flex items-center gap-3 md:gap-10">
           <CiBellOn size={24} />
           <FaUserCircle size={44} />
         </div>
+        
       </div>
     </div>
   );
