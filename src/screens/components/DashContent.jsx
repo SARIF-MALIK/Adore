@@ -22,17 +22,7 @@ function DashContent() {
     <div className="container max-w-full bg-white p-5 rounded-lg">
     <div className="flex justify-between">
       <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
-      {
-        (!localStorage.getItem("authToken")) ?
-                <div className="flex gap-3">
-                  <Link to="/login"><button className="btn bg-[#1366D9] text-white poppins-5">Login</button></Link>
-                  <Link to="/signup"><button className="btn">Signup</button></Link>
-
-                </div> : <div className="flex items-center gap-3 md:gap-10">
-          <CiBellOn size={24} />
-          <FaUserCircle size={44} />
-        </div>
-            }
+     
     </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

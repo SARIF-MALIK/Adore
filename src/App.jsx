@@ -9,6 +9,7 @@ import Orders from './screens/Orders'
 import ManageBranch from './screens/ManageBranch'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
+import Landing from './screens/Landing'
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route exact path='/' element={<Dashboard/>}/>
+        <Route exact path='/' element={<Landing/>}/>
+        <Route exact path='/dashboard' element={<Dashboard/>}/>
         <Route path='/inventory' element={<Inventory/>}/>
         <Route path='/inventory/productdetails' element={<ProductDetails/>}/>
         <Route path='/reports' element={<Reports/>}/>
