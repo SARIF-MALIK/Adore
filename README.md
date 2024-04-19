@@ -13,6 +13,11 @@ This is a Product Management System, designed to efficiently handle products and
 - **Customization**: Easily customizable to fit specific business needs and branding requirements.
 - **Responsive Design**: User-friendly interface that works seamlessly across devices and screen sizes.
 
+## Screenshorts 
+<img src='./public/assets/cms1.png'>
+<img src='./public/assets/cms3.png'>
+<img src='./public/assets/cms2.png'>
+
 ## Technologies Used
 - **Backend**: Node.js, Express.js, MongoDB
 - **Frontend**: HTML, CSS, JavaScript (React.js)
