@@ -36,7 +36,7 @@ function Signup() {
       }
   }
   return (
-    <div className='container h-screen w-screen flex justify-center items-center bg-[url("/assets/loginBg.jpg")]' >
+    <div className='container h-screen w-screen flex justify-center items-center bg-[url("/assets/loginBg.jpg")] bg-cover bg-center' >
     <form onSubmit={handleSubmit} className='border rounded-lg py-5 px-3 w-full md:w-2/4 lg:w-1/4  bg-transparent backdrop-blur-lg text-white'>
         <h1 className='text-center poppins-5 text-xl'>Register</h1>
         <div className="mb-3 flex border rounded-full items-center px-5 py-3 my-5">

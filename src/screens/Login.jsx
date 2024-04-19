@@ -33,17 +33,17 @@ function Login() {
       }
   }
   return (
-    <div className='container h-screen w-screen flex justify-center items-center bg-[url("/assets/loginBg.jpg")]' >
+    <div className='container h-screen w-screen flex justify-center items-center bg-[url("/assets/loginBg.jpg")] bg-cover bg-center' >
     <form onSubmit={handleSubmit} className='border rounded-lg py-5 px-3 w-full md:w-2/4 lg:w-1/4  bg-transparent backdrop-blur-lg text-white'>
         <h1 className='text-center poppins-5 text-xl'>Login</h1>
         <div className="mb-3 flex border rounded-full items-center px-5 py-3 my-5">
             {/* <label htmlFor="email" className="form-label">Email address :</label> */}
-            <input type="email" className=" px-3 w-full outline-none bg-transparent poppins-5 placeholder:text-white" name ='email' id="email" placeholder="Username" onChange={inputChange}/>
+            <input required type="email" className=" px-3 w-full outline-none bg-transparent poppins-5 placeholder:text-white" name ='email' id="email" placeholder="Username" onChange={inputChange}/>
             <FaUser size={22} className=''/>
         </div>
         <div className="mb-3 flex border rounded-full items-center px-5 py-3 my-5">
             {/* <label htmlFor="password" className="form-label">Password :</label> */}
-            <input type="password" className=" px-3 w-full outline-none bg-transparent poppins-5 placeholder:text-white" name='password' id="password" placeholder="Password" onChange={inputChange}/>
+            <input required type="password" className=" px-3 w-full outline-none bg-transparent poppins-5 placeholder:text-white" name='password' id="password" placeholder="Password" onChange={inputChange}/>
             <FaLock size={22} className=''/>
         </div>
         <div className="flex justify-around">
@@ -52,7 +52,7 @@ function Login() {
                 </label>
                 <a href="#">Forget password</a>
             </div>
-            <button type="submit" className="btn bg-white text-black poppins-5 font-semibold w-full rounded-full mt-5">Login</button>
+            <button type="submit" className="btn bg-white text-black poppins-5 font-semibold w-full rounded-full mt-5"> <Link to="/dashboard" className='text-[green] poppins-5'>Login</Link></button>
             <div class="register-link poppins-4 flex justify-center">
                 <p>Don't have an account? <Link to="/signup" className='text-[green] poppins-5'>Register</Link></p>
             </div>
