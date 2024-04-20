@@ -8,25 +8,24 @@ import { LuClipboardSignature } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import './sidebar.css'
 
 function Sidebar() {
   return (
     <div className='flex flex-col h-full w-full justify-between p-5 border rounded-e-lg bg-white'>
-        <ul className='poppins-5'>
-        <li className='poppins-6 text-xl text-[#1570EF] pb-10'><Link to='/'>CMS</Link></li>
-            <li><Link to="/dashboard"><IoHomeOutline size={24} className='inline mr-2'/>Dashboard</Link></li>
-            <li><Link to="/inventory"><LiaLuggageCartSolid size={24} className='inline mr-2'/>Inventory</Link></li>
-            <li><Link to="/reports"><IoIosStats size={24} className='inline mr-2'/>Reports</Link></li>
-            <li><Link to="/suppliers"><FaRegUserCircle size={24} className='inline mr-2'/>Suppliers</Link></li>
-            <li><Link to="/orders"><IoLogoDropbox size={24} className='inline mr-2'/>Orders</Link></li>
-            <li><Link to="/branch"><LuClipboardSignature size={24} className='inline mr-2'/>Manage Branch</Link></li>
+        <ul className='poppins-5 flex flex-col'>
+         <Link to='/' className='poppins-6 text-xl text-[#1570EF] mb-10 mx-2'>CMS</Link>
+            <Link to="/dashboard" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><IoHomeOutline size={24} />Dashboard</Link>
+            <Link to="/inventory" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><LiaLuggageCartSolid size={24} />Inventory</Link>
+            <Link to="/reports" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><IoIosStats size={24} />Reports</Link>
+            <Link to="/suppliers" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><FaRegUserCircle size={24} />Suppliers</Link>
+            <Link to="/orders" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><IoLogoDropbox size={24} />Orders</Link>
+            <Link to="/branch" className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><LuClipboardSignature size={24} />Manage Branch</Link>
         </ul>
 
         <div>
             <ul className='poppins-5'>
-                <li><CiSettings size={24} className='inline mr-2'/>Settings </li>
-                <li><Link to='/'><IoIosLogOut size={24} className='inline mr-2'/>Log Out</Link> </li>
+                <Link to='/settings' className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><CiSettings size={24} />Settings </Link>
+                <Link to='/' className='flex my-5 gap-3 md:mx-3 cursor-pointer hover:text-[#1570EF]'><IoIosLogOut size={24} />Log Out</Link>
             </ul>
         </div>
     </div>

@@ -15,7 +15,7 @@ function Landing() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-[#c8c8c8] overflow-hidden">
+    <div className="h-screen w-screen flex flex-col overflow-hidden">
       <div class="flex w-full h-20 px-5 justify-between items-center">
         <img src={simtrakLogo} className="h-10 md:h-20" alt="" />
         <div className="gap-5 font-poppins hidden md:flex">
@@ -76,18 +76,20 @@ function Landing() {
         )}
       </div>
 
-      <div className=" mt-5 flex h-[700px]">
-        <div className="relative text-center m-auto h-80 md:w-[600px] md:absolute md:left-36 md:top-72 z-10 ">
-          <h1 className="font-poppins text-3xl md:text-5xl leading-normal text-[#13161b] font-light">
-            Meet CMS — the simple way to manage portfolio &amp; showcase your
-            work in style
-          </h1>
-        </div>
-        <Canvas className="translate-x-[560px] hidden md:flex">
+      <div className=" mt-5 block lg:flex h-[700px]">
+          <div className="lg:w-full mt-10 items-center overflow-hidden">
+          <Canvas className="h-[40%] md:translate-x-[260px] lg:translate-x-[560px] md:flex">
           <Model />
           <Environment preset="sunset" />
           <OrbitControlsEnabled />
         </Canvas>
+          </div>
+        <div className="fixed text-center w-full m-auto h-80 lg:w-[600px] lg:absolute lg:left-36 lg:top-72 z-10 ">
+          <h1 className="font-poppins text-3xl md:text-5xl leading-normal lg:leading-relaxed text-[#13161b] font-light">
+            Meet CMS — the simple way to manage portfolio &amp; showcase your
+            work in style
+          </h1>
+        </div>
       </div>
     </div>
   );
@@ -110,7 +112,7 @@ function Model() {
 
 function OrbitControlsEnabled() {
   const { camera } = useThree();
-  const initialPosition = { x: 8, y: 3, z: 5 };
+  const initialPosition = { x: 7, y: 4, z: 5 };
   const [enableControls, setEnableControls] = useState(false);
 
   // Set initial camera position
