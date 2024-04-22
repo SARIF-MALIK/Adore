@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdDelete } from "react-icons/md";
 
 const Branch = () => {
     return (
@@ -24,8 +25,11 @@ const Branch = () => {
                             <p class="mb-3 text-gray-700 dark:text-gray-400 poppins-4">Coimbatore - 6313403</p>
                             <p class="mb-3 text-gray-700 dark:text-gray-400 poppins-4">044-653578</p>
                         </div>
-                        <button class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-5 ml-auto">
+                        <button class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-14 ml-auto">
                             Edit
+                        </button>
+                        <button class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-red-500 font-semibold py-2 px-3 border border-gray-400 rounded shadow">
+                            <MdDelete />
                         </button>
                     </a>
                 </div>
@@ -44,8 +48,11 @@ const Branch = () => {
                             <p className="mb-3 text-gray-700 dark:text-gray-400 poppins-4">Coimbatore - 63133452</p>
                             <p className="mb-3 text-gray-700 dark:text-gray-400 poppins-4">044- 653763</p>
                         </div>
-                        <button className="absolute top-4 right-4  bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-5 ml-auto ">
+                        <button className="absolute top-4 right-4  bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-14 ml-auto ">
                             Edit
+                        </button>
+                        <button class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-red-500 font-semibold py-2 px-3 border border-gray-400 rounded shadow">
+                            <MdDelete />
                         </button>
                     </a>
                 </div>
@@ -64,8 +71,11 @@ const Branch = () => {
                             <p className="mb-3 text-gray-700 dark:text-gray-400 poppins-4">Coimbatore - 6313403</p>
                             <p className="mb-3 text-gray-700 dark:text-gray-400 poppins-4">044- 653578</p>
                         </div>
-                        <button className="absolute top-4 right-4  bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-5 ml-auto ">
+                        <button className="absolute top-4 right-4  bg-white hover:bg-gray-100 text-blue-500 font-semibold py-1 px-6 border border-gray-400 rounded shadow mr-14 ml-auto ">
                             Edit
+                        </button>
+                        <button class="absolute top-4 right-4 bg-white hover:bg-gray-100 text-red-500 font-semibold py-2 px-3 border border-gray-400 rounded shadow">
+                            <MdDelete />
                         </button>
                     </a>
                 </div>
