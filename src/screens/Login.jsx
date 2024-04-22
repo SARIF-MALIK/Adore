@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import polygon from "/assets/Polygon.png";
 
 function Login() {
   const [creden, setCreden] = useState({ email: "", password: "" });
@@ -36,12 +35,12 @@ function Login() {
     <form onSubmit={handleSubmit} className="w-screen h-screen flex">
       <div className="flex justify-between w-[70%] h-[80%] m-auto items-center">
         <div className="hidden md:block text-center">
-          <img src={polygon} width={240} alt="" />
-          <h1 className="poppins-6 text-[47px] text-[#009ED8] mt-5">CMS</h1>
+        <img src="https://cdn-icons-png.flaticon.com/512/5765/5765675.png" width={200} alt="" />
+                    <h1 className="poppins-6 text-[30px] text-[#2B2F38]">CMS</h1>
         </div>
-        <div >
+        <div className="mr-20">
           <div className="flex flex-col justify-center items-center gap-5">
-          <img src={polygon} width={48} alt="" />
+          <img src="https://cdn-icons-png.flaticon.com/512/5765/5765675.png" width={48} alt="" />
           <h1 className="text-center poppins-6 text-3xl text-[#2B2F38]">
             Log in to your account
           </h1>
@@ -64,7 +63,7 @@ function Login() {
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password" className="poppins-5 text-sm text-[#48505E]">
               Password
             </label>
             <input
