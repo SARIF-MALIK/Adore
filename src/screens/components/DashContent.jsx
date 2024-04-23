@@ -21,7 +21,7 @@ function DashContent() {
   return (
     <div className="container max-w-full bg-white p-5 rounded-lg">
     <div className="flex justify-between">
-      <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-1">Dashboard</h1>
      
     </div>
 
