@@ -77,70 +77,7 @@ function Products({ toggle , setToggle}) {
               )
             })
           }
-          {/* <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹257</td>
-            <td>22 Packets</td>
-            <td>12 Packets</td>
-            <td>21/12/22</td>
-            <td className="text-[#DA3E33]">Out of stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹205</td>
-            <td>41 Packets</td>
-            <td>10 Packets</td>
-            <td>11/11/24</td>
-            <td className="text-[#E19133]">Low stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Maggi</td>
-            <td>₹430</td>
-            <td>43 Packets</td>
-            <td>12 Packets</td>
-            <td>11/12/22</td>
-            <td className="text-[#10A760]">In- stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹257</td>
-            <td>22 Packets</td>
-            <td>12 Packets</td>
-            <td>21/12/22</td>
-            <td className="text-[#DA3E33]">Out of stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹205</td>
-            <td>41 Packets</td>
-            <td>10 Packets</td>
-            <td>11/11/24</td>
-            <td className="text-[#E19133]">Low stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Maggi</td>
-            <td>₹430</td>
-            <td>43 Packets</td>
-            <td>12 Packets</td>
-            <td>11/12/22</td>
-            <td className="text-[#10A760]">In- stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹257</td>
-            <td>22 Packets</td>
-            <td>12 Packets</td>
-            <td>21/12/22</td>
-            <td className="text-[#DA3E33]">Out of stock</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹205</td>
-            <td>41 Packets</td>
-            <td>10 Packets</td>
-            <td>11/11/24</td>
-            <td className="text-[#E19133]">Low stock</td>
-          </tr> */}
+          
         </table>
       </div>
       <div>
