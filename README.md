@@ -1,4 +1,4 @@
-# CMS (content management system)
+# CMS (consumables management system)
 
 ## Overview
 This is a Product Management System, designed to efficiently handle products and their details. Whether you're managing a small inventory or a large catalog, this CMS provides the tools you need to organize, update, and analyze your product data.
