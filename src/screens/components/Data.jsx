@@ -243,5 +243,234 @@ export const ProductsData = [
       expiry: "20/12/22",
       avl: "In-stock"
     },
+    
 ]
 
+export const SuppliersData = [
+    {
+      id: 1,
+      supplierName: "Richard Martin",
+      product: "Kit kat",
+      contact: "7687764556",
+      email: "richard@gmail.com",
+      type: "Taking Return",
+      stockInTransit: 13
+    },
+    {
+      id: 2,
+      supplierName: "Tom Homan",
+      product: "Maaza",
+      contact: "9667754096",
+      email: "tomhoman@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 3,
+      supplierName: "Veandir",
+      product: "Dairy Milk",
+      contact: "9668754096",
+      email: "veandir@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 4,
+      supplierName: "Charin",
+      product: "Tomato",
+      contact: "9267545457",
+      email: "charin@gmail.com",
+      type: "Taking Return",
+      stockInTransit: 12
+    },
+    {
+      id: 5,
+      supplierName: "Hoffman",
+      product: "Milk Bikis",
+      contact: "9367546531",
+      email: "hoffman@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 6,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 7,
+      supplierName: "Martin",
+      product: "Saffola",
+      contact: "9867545457",
+      email: "martin@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 8,
+      supplierName: "Joe Nike",
+      product: "Good day",
+      contact: "9567545769",
+      email: "joenike@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 9,
+      supplierName: "Dender Luke",
+      product: "Apple",
+      contact: "9667545980",
+      email: "dender@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 7
+    },
+    {
+      id: 10,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 11,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 12,
+      supplierName: "Richard Martin",
+      product: "Kit kat",
+      contact: "7687764556",
+      email: "richard@gmail.com",
+      type: "Taking Return",
+      stockInTransit: 13
+    },
+    {
+      id: 13,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 14,
+      supplierName: "Veandir",
+      product: "Dairy Milk",
+      contact: "9668754096",
+      email: "veandir@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 15,
+      supplierName: "Richard Martin",
+      product: "Kit kat",
+      contact: "7687764556",
+      email: "richard@gmail.com",
+      type: "Taking Return",
+      stockInTransit: 13
+    },
+    {
+      id: 16,
+      supplierName: "Tom Homan",
+      product: "Maaza",
+      contact: "9667754096",
+      email: "tomhoman@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 17,
+      supplierName: "Veandir",
+      product: "Dairy Milk",
+      contact: "9668754096",
+      email: "veandir@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 18,
+      supplierName: "Charin",
+      product: "Tomato",
+      contact: "9267545457",
+      email: "charin@gmail.com",
+      type: "Taking Return",
+      stockInTransit: 12
+    },
+    {
+      id: 19,
+      supplierName: "Hoffman",
+      product: "Milk Bikis",
+      contact: "9367546531",
+      email: "hoffman@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 20,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 21,
+      supplierName: "Martin",
+      product: "Saffola",
+      contact: "9867545457",
+      email: "martin@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 22,
+      supplierName: "Joe Nike",
+      product: "Good day",
+      contact: "9567545769",
+      email: "joenike@gmail.com",
+      type: "Taking Return",
+      stockInTransit: null
+    },
+    {
+      id: 23,
+      supplierName: "Dender Luke",
+      product: "Apple",
+      contact: "9667545980",
+      email: "dender@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 7
+    },
+    {
+      id: 24,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    },
+    {
+      id: 25,
+      supplierName: "Fainden Juke",
+      product: "Marie Gold",
+      contact: "9667545982",
+      email: "fainden@gmail.com",
+      type: "Not Taking Return",
+      stockInTransit: 9
+    }
+  ];
+  

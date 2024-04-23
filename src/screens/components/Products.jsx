@@ -7,9 +7,14 @@ import { ProductsData } from "./Data";
 function Products({ toggle , setToggle}) {
   const [pageIndex, setPageIndex] = useState(0); 
   const productsPerPage = 10; 
+  const startIndex = pageIndex * productsPerPage; 
+  const endIndex = (pageIndex + 1) * productsPerPage; 
+  const visibleProducts = ProductsData.slice(startIndex, endIndex); 
+  const totalPages = Math.ceil(ProductsData.length/productsPerPage);
 
   const handleNextClick = () =>{
-    setPageIndex(pageIndex+1); 
+    if(pageIndex < totalPages-1)
+      setPageIndex(pageIndex+1); 
   }
   const handlePrevClick = () =>{
     if(pageIndex > 0){
@@ -17,10 +22,6 @@ function Products({ toggle , setToggle}) {
     }
   }
 
-  const startIndex = pageIndex * productsPerPage; 
-  const endIndex = (pageIndex + 1) * productsPerPage; 
-
-  const visibleProducts = ProductsData.slice(startIndex, endIndex); 
 
   return (
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
@@ -83,7 +84,7 @@ function Products({ toggle , setToggle}) {
       <div>
       <div className="flex  justify-between pt-3 poppins-5 text-sm text-[#48505E]">
           <button className="btn" onClick={handlePrevClick}>Previous</button>
-          <p className="">Page {pageIndex+1} of 10</p>
+          <p className="">Page {pageIndex+1} of {totalPages}</p>
           <button className="btn" onClick={handleNextClick}>Next</button>
         </div>
       </div>
