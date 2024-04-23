@@ -86,7 +86,7 @@ function Newproduct() {
                 id="prodExp"
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
-                placeholder="Enter expiry date"
+                placeholder="DD/MM/YY"
               />
             </div>
             <div className="flex justify-between items-center">

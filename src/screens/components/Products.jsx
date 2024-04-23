@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { threshold } from "three/examples/jsm/nodes/Nodes.js";
+import { ProductsData } from "./Data";
 
 function Products({ toggle , setToggle}) {
+  const [pageIndex, setPageIndex] = useState(0); 
+  const productsPerPage = 10; 
+
+  const handleNextClick = () =>{
+    setPageIndex(pageIndex+1); 
+  }
+  const handlePrevClick = () =>{
+    if(pageIndex > 0){
+      setPageIndex(pageIndex-1); 
+    }
+  }
+
+  const startIndex = pageIndex * productsPerPage; 
+  const endIndex = (pageIndex + 1) * productsPerPage; 
+
+  const visibleProducts = ProductsData.slice(startIndex, endIndex); 
+
   return (
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
@@ -32,15 +51,33 @@ function Products({ toggle , setToggle}) {
             <th className="poppins-4 text-sm text-start">Availability</th>
           </tr>
           
-          <tr className="poppins-5 text-sm border-t-2 h-10">
+          {/* <tr className="poppins-5 text-sm border-t-2 h-10">
             <td><Link to="/inventory/productdetails/">Maggi</Link></td>
             <td>₹430</td>
             <td>43 Packets</td>
             <td>12 Packets</td>
             <td>11/12/22</td>
             <td className="text-[#10A760]">In- stock</td>
+          </tr> */}
+          {
+            visibleProducts.map((prod)=>{
+              return (
+            <tr className="poppins-5 text-sm border-t-2 h-10">
+            <td>{prod.product}</td>
+            <td>₹{prod.price}</td>
+            <td>{prod.qty} Packets</td>
+            <td>{prod.thresholdValue} Packets</td>
+            <td>{prod.expiry}</td>
+            <td className={`text-sm ${
+                prod.avl === 'In-stock' ? 'text-[#10A760]' :
+                prod.avl === 'Low stock' ? 'text-[#E19133]' :
+                prod.avl === 'Out of stock' ? 'text-[#DA3E33]' : ''
+              }`}>{prod.avl}</td>
           </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
+              )
+            })
+          }
+          {/* <tr className="poppins-5 text-sm border-t-2 h-10">
             <td>Bru</td>
             <td>₹257</td>
             <td>22 Packets</td>
@@ -103,14 +140,14 @@ function Products({ toggle , setToggle}) {
             <td>10 Packets</td>
             <td>11/11/24</td>
             <td className="text-[#E19133]">Low stock</td>
-          </tr>
+          </tr> */}
         </table>
       </div>
       <div>
       <div className="flex  justify-between pt-3 poppins-5 text-sm text-[#48505E]">
-          <button className="btn">Previous</button>
-          <p className="">Page 1 of 10</p>
-          <button className="btn">Next</button>
+          <button className="btn" onClick={handlePrevClick}>Previous</button>
+          <p className="">Page {pageIndex+1} of 10</p>
+          <button className="btn" onClick={handleNextClick}>Next</button>
         </div>
       </div>
     </div>
