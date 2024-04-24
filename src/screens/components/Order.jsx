@@ -9,15 +9,15 @@ function Order({ toggle, setToggle }) {
   const startIndex = pageIndex * entryPerPage;
   const endIndex = (pageIndex + 1) * entryPerPage;
   const visibleOrders = OrdersData.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(OrdersData.length/entryPerPage); 
+  const totalPages = Math.ceil(OrdersData.length / entryPerPage);
 
-  const handleNextBtn = () =>{
-    if(pageIndex < totalPages-1)
-      setPageIndex(pageIndex+1)
+  const handleNextBtn = () => {
+    if (pageIndex < totalPages - 1)
+      setPageIndex(pageIndex + 1)
   }
-  const handlePrvBtn = () =>{
-    if(pageIndex > 0)
-      setPageIndex(pageIndex-1)
+  const handlePrvBtn = () => {
+    if (pageIndex > 0)
+      setPageIndex(pageIndex - 1)
   }
 
   return (
@@ -65,28 +65,27 @@ function Order({ toggle, setToggle }) {
                 <td>{order.orderId}</td>
                 <td>{order.expectedDelivery}</td>
                 <td
-                  className={`${
-                    order.status == "Delayed"
-                      ? "text-[#F79009]"
-                      : order.status == "Confirmed"
+                  className={`${order.status == "Delayed"
+                    ? "text-[#F79009]"
+                    : order.status == "Confirmed"
                       ? "text-[#1570EF]"
                       : order.status == "Returned"
-                      ? "text-[#667085]"
-                      : "text-[#10A760]"
-                  }`}
+                        ? "text-[#667085]"
+                        : "text-[#10A760]"
+                    }`}
                 >
                   {order.status}
                 </td>
               </tr>
             );
           })}
-          
+
         </table>
       </div>
       <div>
         <div className="flex  justify-between pt-3 poppins-5 text-sm text-[#48505E]">
           <button className="btn" onClick={handlePrvBtn}>Previous</button>
-          <p className="">Page {pageIndex+1} of {totalPages}</p>
+          <p className="">Page {pageIndex + 1} of {totalPages}</p>
           <button className="btn" onClick={handleNextBtn}>Next</button>
         </div>
       </div>

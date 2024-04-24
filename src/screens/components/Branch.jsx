@@ -10,7 +10,7 @@ const Branch = ({ toggle, setToggle }) => {
           <h1 className="float-left text-lg font-medium text-[#383E49]">
             Manage Branch
           </h1>
-          <button class="bg-blue-700 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded float-right mr-4 text-sm">
+          <button class="bg-blue-700 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded float-right mr-4 text-sm" onClick={() => setToggle(!toggle)}>
             Add Store
           </button>
         </div>
