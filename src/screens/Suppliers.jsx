@@ -30,9 +30,6 @@ function Suppliers() {
         toggle && <Newsupplier/> 
       }
       </div>
-
-
-    
     </div>
   );
 }

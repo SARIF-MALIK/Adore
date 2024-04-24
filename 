@@ -1,0 +1,7 @@
+ public/assets/simtrak-logo.png              |  Bin [31m17890[m -> [32m210906[m bytes
+ src/screens/Suppliers.jsx                   |    3 [31m-[m
+ src/screens/components/BestSellCategory.jsx |    2 [32m+[m[31m-[m
+ src/screens/components/Data.jsx             | 1546 [32m++++++++++++++[m[31m-------------[m
+ src/screens/components/Overall.jsx          |   25 [32m+[m[31m-[m
+ src/screens/components/Overview.jsx         |   15 [32m+[m[31m-[m
+ 6 files changed, 813 insertions(+), 778 deletions(-)

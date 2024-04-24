@@ -6,7 +6,7 @@ function BestSellCategory() {
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
         <div>
-          <h1 className="poppins-5 text-lg py-5">Best selling product</h1>
+          <h1 className="poppins-5 text-lg py-5">Best selling categories</h1>
         </div>
         <div className="flex gap-3">
          <Link to="/">See All</Link>
