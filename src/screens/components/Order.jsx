@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { OrdersData } from "./Data";
 
-function Order({ toggle , setToggle}) {
+function Order({ toggle, setToggle }) {
+  const [pageIndex, setPageIndex] = useState(0);
+  const entryPerPage = 10;
+  const startIndex = pageIndex * entryPerPage;
+  const endIndex = (pageIndex + 1) * entryPerPage;
+  const visibleOrders = OrdersData.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(OrdersData.length/entryPerPage); 
+
+  const handleNextBtn = () =>{
+    if(pageIndex < totalPages-1)
+      setPageIndex(pageIndex+1)
+  }
+  const handlePrvBtn = () =>{
+    if(pageIndex > 0)
+      setPageIndex(pageIndex-1)
+  }
+
   return (
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
@@ -10,7 +27,12 @@ function Order({ toggle , setToggle}) {
           <h1 className="poppins-5 text-lg py-5">Orders</h1>
         </div>
         <div className="flex gap-3">
-          <button className="btn bg-[#1366D9] text-white" onClick={()=>setToggle(!toggle)}>Place Order</button>
+          <button
+            className="btn bg-[#1366D9] text-white"
+            onClick={() => setToggle(!toggle)}
+          >
+            Place Order
+          </button>
           <button className="btn flex items-center justify-center gap-2">
             {" "}
             <MdFilterList size={22} />
@@ -20,10 +42,8 @@ function Order({ toggle , setToggle}) {
         </div>
       </div>
       <div>
-        <table  className="text-[#667085] w-full">
-          <tr className="h-10"
-           
-          >
+        <table className="text-[#667085] w-full">
+          <tr className="h-10">
             <th className="poppins-4 text-sm text-start">Products</th>
             <th className="poppins-4 text-sm text-start">Order Value</th>
             <th className="poppins-4 text-sm text-start">Quantity</th>
@@ -31,86 +51,43 @@ function Order({ toggle , setToggle}) {
             <th className="poppins-4 text-sm text-start">Expected Delivery</th>
             <th className="poppins-4 text-sm text-start">Status</th>
           </tr>
+
+          {visibleOrders.map((order) => {
+            return (
+              <tr className="poppins-5 text-sm border-t-2 h-10">
+                <td>
+                  <Link to="/inventory/productdetails/">
+                    {order.productName}
+                  </Link>
+                </td>
+                <td>{order.orderValue}</td>
+                <td>{order.qty}</td>
+                <td>{order.orderId}</td>
+                <td>{order.expectedDelivery}</td>
+                <td
+                  className={`${
+                    order.status == "Delayed"
+                      ? "text-[#F79009]"
+                      : order.status == "Confirmed"
+                      ? "text-[#1570EF]"
+                      : order.status == "Returned"
+                      ? "text-[#667085]"
+                      : "text-[#10A760]"
+                  }`}
+                >
+                  {order.status}
+                </td>
+              </tr>
+            );
+          })}
           
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td><Link to="/inventory/productdetails/">Maggi</Link></td>
-            <td>₹4306</td>
-            <td>43 Packets</td>
-            <td>7535</td>
-            <td>11/12/22</td>
-            <td className="text-[#F79009]">Delayed</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹2557</td>
-            <td>22 Packets</td>
-            <td>5724</td>
-            <td>21/12/22</td>
-            <td className="text-[#1570EF]">Confirmed</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹2015</td>
-            <td>41 Packets</td>
-            <td>2775</td>
-            <td>11/11/24</td>
-            <td className="text-[#667085]">Returned</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Maggi</td>
-            <td>₹4130</td>
-            <td>43 Packets</td>
-            <td>1256</td>
-            <td>11/12/22</td>
-            <td className="text-[#10A760]">Out for delivery</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹257</td>
-            <td>22 Packets</td>
-            <td>3412 Packets</td>
-            <td>21/12/22</td>
-            <td className="text-[#667085]">Returned</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹205</td>
-            <td>41 Packets</td>
-            <td>1230</td>
-            <td>11/11/24</td>
-            <td className="text-[#10A760]">Out for delivery</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Maggi</td>
-            <td>₹430</td>
-            <td>43 Packets</td>
-            <td>6612</td>
-            <td>11/12/22</td>
-            <td className="text-[#F79009]">Delayed</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Bru</td>
-            <td>₹257</td>
-            <td>22 Packets</td>
-            <td>1432</td>
-            <td>21/12/22</td>
-            <td className="text-[#1570EF]">Confirmed</td>
-          </tr>
-          <tr className="poppins-5 text-sm border-t-2 h-10">
-            <td>Coca cola</td>
-            <td>₹205</td>
-            <td>41 Packets</td>
-            <td>4510</td>
-            <td>11/11/24</td>
-            <td className="text-[#F79009]">Delayed</td>
-          </tr>
         </table>
       </div>
       <div>
-      <div className="flex  justify-between pt-3 poppins-5 text-sm text-[#48505E]">
-          <button className="btn">Previous</button>
-          <p className="">Page 1 of 10</p>
-          <button className="btn">Next</button>
+        <div className="flex  justify-between pt-3 poppins-5 text-sm text-[#48505E]">
+          <button className="btn" onClick={handlePrvBtn}>Previous</button>
+          <p className="">Page {pageIndex+1} of {totalPages}</p>
+          <button className="btn" onClick={handleNextBtn}>Next</button>
         </div>
       </div>
     </div>

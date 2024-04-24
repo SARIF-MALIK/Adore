@@ -474,3 +474,258 @@ export const SuppliersData = [
     }
   ];
   
+export const OrdersData = [
+    {
+      id: 1,
+      productName: "Maggi",
+      orderValue: "₹4306",
+      qty: "43 Packets",
+      orderId: "7535",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 2,
+      productName: "Bru",
+      orderValue: "₹2557",
+      qty: "22 Packets",
+      orderId: "5724",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 3,
+      productName: "Coca cola",
+      orderValue: "₹2015",
+      qty: "41 Packets",
+      orderId: "2775",
+      expectedDelivery: "11/11/24",
+      status: "Returned"
+    },
+    {
+      id: 4,
+      productName: "Maggi",
+      orderValue: "₹4130",
+      qty: "43 Packets",
+      orderId: "1256",
+      expectedDelivery: "11/12/22",
+      status: "Out for delivery"
+    },
+    {
+      id: 5,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "3412",
+      expectedDelivery: "21/12/22",
+      status: "Returned"
+    },
+    {
+      id: 6,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "1230",
+      expectedDelivery: "11/11/24",
+      status: "Out for delivery"
+    },
+    {
+      id: 7,
+      productName: "Maggi",
+      orderValue: "₹430",
+      qty: "43 Packets",
+      orderId: "6612",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 8,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "1432",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 9,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "4510",
+      expectedDelivery: "11/11/24",
+      status: "Delayed"
+    },
+    {
+      id: 10,
+      productName: "Maggi",
+      orderValue: "₹4306",
+      qty: "43 Packets",
+      orderId: "7535",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 11,
+      productName: "Bru",
+      orderValue: "₹2557",
+      qty: "22 Packets",
+      orderId: "5724",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 12,
+      productName: "Coca cola",
+      orderValue: "₹2015",
+      qty: "41 Packets",
+      orderId: "2775",
+      expectedDelivery: "11/11/24",
+      status: "Returned"
+    },
+    {
+      id: 13,
+      productName: "Maggi",
+      orderValue: "₹4130",
+      qty: "43 Packets",
+      orderId: "1256",
+      expectedDelivery: "11/12/22",
+      status: "Out for delivery"
+    },
+    {
+      id: 14,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "3412",
+      expectedDelivery: "21/12/22",
+      status: "Returned"
+    },
+    {
+      id: 15,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "1230",
+      expectedDelivery: "11/11/24",
+      status: "Out for delivery"
+    },
+    {
+      id: 16,
+      productName: "Maggi",
+      orderValue: "₹430",
+      qty: "43 Packets",
+      orderId: "6612",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 17,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "1432",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 18,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "4510",
+      expectedDelivery: "11/11/24",
+      status: "Delayed"
+    },
+    {
+      id: 19,
+      productName: "Maggi",
+      orderValue: "₹4306",
+      qty: "43 Packets",
+      orderId: "7535",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 20,
+      productName: "Bru",
+      orderValue: "₹2557",
+      qty: "22 Packets",
+      orderId: "5724",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 21,
+      productName: "Coca cola",
+      orderValue: "₹2015",
+      qty: "41 Packets",
+      orderId: "2775",
+      expectedDelivery: "11/11/24",
+      status: "Returned"
+    },
+    {
+      id: 22,
+      productName: "Maggi",
+      orderValue: "₹4130",
+      qty: "43 Packets",
+      orderId: "1256",
+      expectedDelivery: "11/12/22",
+      status: "Out for delivery"
+    },
+    {
+      id: 23,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "3412",
+      expectedDelivery: "21/12/22",
+      status: "Returned"
+    },
+    {
+      id: 24,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "1230",
+      expectedDelivery: "11/11/24",
+      status: "Out for delivery"
+    },
+    {
+      id: 25,
+      productName: "Maggi",
+      orderValue: "₹430",
+      qty: "43 Packets",
+      orderId: "6612",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    },
+    {
+      id: 26,
+      productName: "Bru",
+      orderValue: "₹257",
+      qty: "22 Packets",
+      orderId: "1432",
+      expectedDelivery: "21/12/22",
+      status: "Confirmed"
+    },
+    {
+      id: 27,
+      productName: "Coca cola",
+      orderValue: "₹205",
+      qty: "41 Packets",
+      orderId: "4510",
+      expectedDelivery: "11/11/24",
+      status: "Delayed"
+    },
+    {
+      id: 28,
+      productName: "Maggi",
+      orderValue: "₹4306",
+      qty: "43 Packets",
+      orderId: "7535",
+      expectedDelivery: "11/12/22",
+      status: "Delayed"
+    }
+  ];
+  
