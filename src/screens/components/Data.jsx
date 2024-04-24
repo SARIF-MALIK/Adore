@@ -729,3 +729,34 @@ export const OrdersData = [
     }
   ];
   
+export const branchData = [
+    {
+      id: 1,
+      branchName: "ABC Mart",
+      address: "1A/Krihnarajapuram, 3rd street sulur",
+      state: "Coimbatore",
+      pin: "12345",
+      contact: "123-456-7890",
+      branchImg: "https://imgs.search.brave.com/1OKjQ3NYoT2gRXJr960MS_JrWIjtAIxWm7cNIP0iqxo/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAzLzEzLzA1Lzkw/LzM2MF9GXzMxMzA1/OTA0Ml9HN1E5NXJ0/Tkl0ZkhRTUszMW54/TFVIY3hvWU9ETlpZ/VC5qcGc"
+    },
+    {
+      id: 2,
+      branchName: "XYZ Store",
+      address: "456 Oak Avenue",
+      state: "New York",
+      pin: "54321",
+      contact: "987-654-3210",
+      branchImg: "https://imgs.search.brave.com/LP3C-H_FNU_ztWlSTAyEApSel2r_nZ-fB5STM9fnUHI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hcmNo/aXRlY3R1cmVzaWRl/YXMuYi1jZG4ubmV0/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE3/LzA4L3NtYWxsLW9m/ZmljZS1idWlsZGlu/Zy1kZXNpZ24yNS1l/MTU3MTM4ODc2MDE3/NC5qcGc"
+    },
+    {
+      id: 3,
+      branchName: "PQR Market",
+      address: "789 Elm Boulevard",
+      state: "Texas",
+      pin: "67890",
+      contact: "456-789-0123",
+      branchImg: "https://imgs.search.brave.com/GGc09jNQh_7isxybp8g0W6wwFzT0qBU5CfhtYFkXEIg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/d2JkZy5vcmcvaW1h/Z2VzL29mZmljZV8w/OC5qcGc"
+    }
+    // Add more branches as needed
+  ];
+  
