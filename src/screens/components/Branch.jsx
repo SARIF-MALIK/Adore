@@ -2,7 +2,7 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { branchData } from "./Data";
 
-const Branch = () => {
+const Branch = ({ toggle, setToggle }) => {
   return (
     <div>
       <div className="w-full bg-white rounded-lg float-right py-5">
