@@ -98,7 +98,7 @@ function ListedItem() {
             <h1 className="poppins-6 text-[16px] text-[#48505E] ">Stock Locations</h1>
             <div>
               <table className="text-[#667085] w-full mt-3">
-                <tr className="h-10 bg-[#F0F1F3] text-[#5D6679] h-10">
+                <tr className="h-10 bg-[#F0F1F3] text-[#5D6679] ">
                   <th className="poppins-6 text-sm text-start">Store Name</th>
                   <th className="poppins-6 text-sm text-start">
                     Stock in hand

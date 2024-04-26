@@ -10,6 +10,8 @@ import ManageBranch from './screens/ManageBranch'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
 import Landing from './screens/Landing'
+import CategorySeeAll from './screens/components/CategorySeeAll'
+import ProductSeeAll from './screens/components/ProductSeeAll'
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path='/inventory' element={<Inventory/>}/>
         <Route path='/inventory/productdetails' element={<ProductDetails/>}/>
         <Route path='/reports' element={<Reports/>}/>
+        <Route path='/reports/categoryseeall' element={<CategorySeeAll/>}/>
+        <Route path='/reports/productseeall' element={<ProductSeeAll/>}/>
         <Route path='/suppliers' element={<Suppliers/>}/>
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/branch' element={<ManageBranch/>}/>

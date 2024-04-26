@@ -1,13 +1,14 @@
 import React from 'react'
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
-import revenueData from "./revenueData.json"
+// import revenueData from "./revenueData.json"
+import { revenueData } from './Data';
 
 export const Charts = () => {
     return (
         <div className="  w-full justify-center bg-white h-80 p-5">
             <div className="dataCard revenueCard h-full">
-                <Line 
+                <Line
                     data={{
                         labels: revenueData.map((data) => data.label),
                         datasets: [
@@ -35,16 +36,16 @@ export const Charts = () => {
                             }
                         },
                         plugins: {
-                            title:{
-                                display : true,
-                                position : 'top',
-                                align : 'start',
-                                text : "Profit & Revenue",
-                                font : {
+                            title: {
+                                display: true,
+                                position: 'top',
+                                align: 'start',
+                                text: "Profit & Revenue",
+                                font: {
                                     size: 18,
-                                    family : "'Poppins','sans-serif'",
-                                    weight : 'normal',
-                                    
+                                    family: "'Poppins','sans-serif'",
+                                    weight: 'normal',
+
                                 },
                                 padding: {
                                     top: 10,
@@ -52,8 +53,8 @@ export const Charts = () => {
                                 },
                             },
                             legend: {
-                                display : true, 
-                                position : 'bottom',
+                                display: true,
+                                position: 'bottom',
                                 labels: {
                                     usePointStyle: true, // Use point style for legend items
                                 },
@@ -80,9 +81,9 @@ export const Charts = () => {
                                     display: false, // Hide grid lines
                                 },
                             },
-                            
+
                         },
-                        
+
                         maintainAspectRatio: false,
                     }}
                 />

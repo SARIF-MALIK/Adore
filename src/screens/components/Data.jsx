@@ -792,3 +792,41 @@ export const overviewData = {
   momProfit: "₹30,432",
   yoyProfit: "₹1,10,497",
 };
+
+export const revenueData = [
+  {
+    "label": "Sep",
+    "revenue": 20000,
+    "profit": 41349
+  },
+  {
+    "label": "Oct",
+    "revenue": 45000,
+    "profit": 30000
+  },
+  {
+    "label": "Nov",
+    "revenue": 25000,
+    "profit": 35000
+  },
+  {
+    "label": "Dec",
+    "revenue": 76000,
+    "profit": 55000
+  },
+  {
+    "label": "Jan",
+    "revenue": 50000,
+    "profit": 53000
+  },
+  {
+    "label": "Feb",
+    "revenue": 58000,
+    "profit": 42000
+  },
+  {
+    "label": "Mar",
+    "revenue": 38000,
+    "profit": 50262
+  }
+]

@@ -9,7 +9,7 @@ function BestSellCategory() {
           <h1 className="poppins-5 text-lg py-5">Best selling categories</h1>
         </div>
         <div className="flex gap-3">
-         <Link to="/">See All</Link>
+         <Link to="categorySeeAll">See All</Link>
         </div>
       </div>
       <div>
