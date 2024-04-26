@@ -1,19 +1,58 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 function Newproduct() {
+  const [image, setImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState("");
+  const fileInput = useRef(null); 
+
+  const handleFile = (file) => {
+    setImage(file);
+    setPreviewUrl(URL.createObjectURL(file));
+  };
+  const handleOndragOver = (e) => {
+    e.preventDefault();
+  };
+  const handleOnDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let imageFile = e.dataTransfer.files[0];
+    handleFile(imageFile);
+  };
   return (
-    <div className="absolute top-[15%] left-[40%]">
+    <div className="absolute top-[8%] left-[40%]">
       <div className="bg-white w-[450px] h-[650px] p-5 rounded-lg">
         <h1 className="poppins-5 text-xl text-[#383E49]">New Product</h1>
-        <div className="flex justify-center gap-5 items-center my-5">
-          <div className="drag w-[81px] h-[81px] border-2 border-dashed rounded-lg"></div>
+        <div className="flex justify-center gap-5 items-center my-5 mb-10">
+          <div>
+          <div
+            className="drag w-[81px] h-[81px] border-2 border-dashed rounded-lg overflow-hidden object-cover"
+            onDragOver={handleOndragOver}
+            onDrop={handleOnDrop}
+            onClick={e=>handleFile(e.target.files[0])}
+          >
+            {previewUrl && (
+              <div className="image">
+                <img src={previewUrl} alt="image" className=""/>
+              </div>
+            )}
+          </div>
+          {previewUrl && <span>{image.name}</span>}
+          </div>
+
           <div className="flex flex-col items-center poppins-4 text-[#858D9D] text-sm">
             <p>Drag image here</p>
             <p>or</p>
-            <p className="text-[#448DF2]">Browse image</p>
+            <label htmlFor="imageInput" className="text-[#448DF2]">Browse image</label>
+            <input 
+           type="file" 
+           accept='image/*' hidden
+           ref={fileInput}  
+           onChange={e => handleFile(e.target.files[0])}
+           id="imageInput"
+          />
           </div>
         </div>
-
+        
         <div>
           <form
             action=""
