@@ -17,9 +17,9 @@ This is a Product Management System, designed to efficiently handle products and
 
 ## Screenshorts
 
-<img src='./public/assets/cms1.png'>
-<img src='./public/assets/cms3.png'>
-<img src='./public/assets/cms4.png'>
+<img src='./client/public/assets/cms1.png'>
+<img src='./client/public/assets/cms3.png'>
+<img src='./client/public/assets/cms4.png'>
 
 ## Technologies Used
 
