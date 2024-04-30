@@ -1,22 +1,51 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { LuUser2 } from "react-icons/lu";
 
 function Newsupplier() {
+  const [image, setImage] = useState(null); 
+  const [previewUrl, setPreviewURL] = useState("");
+  const fileInput = useRef(null); 
+  const handleFile  = (file) =>{
+    setImage(file); 
+    setPreviewURL(URL.createObjectURL(file));
+  }
+  const handleOndragOver = (e) => {
+    e.preventDefault();
+  };
+  const handleOndrop = (e)=>{
+    e.preventDefault(); 
+    e.stopPropagation();
+    let imageFile = e.dataTransfer.files[0]
+    handleFile(imageFile); 
+  }
   return (
     <div className="absolute top-[15%] left-[40%]">
       <div className="bg-white w-[450px] h-[550px] p-5 rounded-lg">
         <h1 className="poppins-5 text-xl text-[#383E49]">New Supplier</h1>
         <div className="flex justify-center gap-5 items-center my-5">
-          <div className="drag w-[81px] h-[81px] border-2 border-dashed rounded-full relative">
+          <div className="drag w-[81px] h-[81px] border-2 border-dashed rounded-full relative overflow-hidden" onDrop={handleOndrop} onDragOver={handleOndragOver} >
+          {previewUrl?(
+              <div className="image">
+                <img src={previewUrl} alt="image" className=""/>
+              </div>
+            ): (
             <LuUser2
               size={70}
               className="absolute top-0 left-1 text-[#9D9D9D]"
             />
+            )}
           </div>
           <div className="flex flex-col items-center poppins-4 text-[#858D9D] text-sm">
             <p>Drag image here</p>
             <p>or</p>
-            <p className="text-[#448DF2]">Browse image</p>
+            <label htmlFor="supplierImg" className="text-[#448DF2] hover:cursor-pointer">Browse image</label>
+            <input 
+           type="file" 
+           accept='image/*' hidden
+           ref={fileInput}  
+           onChange={e => handleFile(e.target.files[0])}
+           id="supplierImg"
+          />
           </div>
         </div>
 

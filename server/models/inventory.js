@@ -1,5 +1,4 @@
-const mongoose = require('mongoose'); 
-
+import mongoose from "mongoose"
 const inventorySchema  = new mongoose.Schema({
     productName:{
         type:String, 
@@ -39,3 +38,6 @@ const inventorySchema  = new mongoose.Schema({
         default: 'in stock' // Default value when not specified
     }
 })
+
+const Inventory = mongoose.model('inventory', inventorySchema); 
+module.exports =  Inventory

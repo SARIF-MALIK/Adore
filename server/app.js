@@ -1,6 +1,7 @@
-const express = require("express"); 
+import express from "express"
+import path from "path"
+import mongoose from "mongoose";
 const app = express(); 
-const path = require("path"); 
 
 mongoose.connect('mongodb://localhost:27017/adore-cms');
 
