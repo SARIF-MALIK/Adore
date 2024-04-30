@@ -42,7 +42,7 @@ function Newproduct() {
           <div className="flex flex-col items-center poppins-4 text-[#858D9D] text-sm">
             <p>Drag image here</p>
             <p>or</p>
-            <label htmlFor="imageInput" className="text-[#448DF2]">Browse image</label>
+            <label htmlFor="imageInput" className="text-[#448DF2] hover:cursor-pointer">Browse image</label>
             <input 
            type="file" 
            accept='image/*' hidden
