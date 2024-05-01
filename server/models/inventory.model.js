@@ -26,4 +26,4 @@ const inventorySchema  = new mongoose.Schema({
     },
 })
 
-export const Inventory = mongoose.model('inventory', inventorySchema); 
+export default mongoose.model('inventory', inventorySchema); 
