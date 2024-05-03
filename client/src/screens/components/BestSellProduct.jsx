@@ -1,31 +1,47 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { BSProduct } from './Data'
 
 function BestSellProduct() {
   return (
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
         <div>
-          <h1 className="poppins-5 text-lg py-5">Best selling product</h1>
+          <h1 className="poppins-5 text-lg py-5">Most consumed product</h1>
         </div>
         <div className="flex gap-3">
-         <Link to="/productSeeAll">See All</Link>
+          <Link to="productSeeAll">See All</Link>
         </div>
       </div>
       <div>
-        <table  className="text-[#667085] w-full">
+        <table className="text-[#667085] w-full">
           <tr className="h-10"
-           
+
           >
             <th className="poppins-4 text-sm text-start">Product</th>
             <th className="poppins-4 text-sm text-start">Product ID</th>
             <th className="poppins-4 text-sm text-start">Category</th>
             <th className="poppins-4 text-sm text-start">Remaining Quantity</th>
-            <th className="poppins-4 text-sm text-start">Turn Over</th>
+            <th className="poppins-4 text-sm text-start">Incurred Cost</th>
             <th className="poppins-4 text-sm text-start">Increase By</th>
           </tr>
-          
-          <tr className="poppins-5 text-sm border-t-2 h-10">
+
+          {
+            BSProduct.slice(0, 4).map(item => {
+              return (
+                <tr className="poppins-5 text-sm border-t-2 h-10">
+                  <td><Link to="/inventory/productdetails/">{item.product}</Link></td>
+                  <td>{item.productId}</td>
+                  <td>{item.category}</td>
+                  <td>{item.remainingQuantity}</td>
+                  <td>{item.turnOver}</td>
+                  <td className="text-[#10A760]">{item.increaseBy}</td>
+                </tr>
+              )
+            })
+          }
+
+          {/* <tr className="poppins-5 text-sm border-t-2 h-10">
             <td><Link to="/inventory/productdetails/">Tomato</Link></td>
             <td>23567</td>
             <td>Vegetable</td>
@@ -56,8 +72,7 @@ function BestSellProduct() {
             <td>125 Packets</td>
             <td>₹9,000</td>
             <td className="text-[#10A760]">1%</td>
-          </tr>
-         
+          </tr> */}
         </table>
       </div>
     </div>

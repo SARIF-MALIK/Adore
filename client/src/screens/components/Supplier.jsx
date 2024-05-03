@@ -53,7 +53,7 @@ function Supplier({ toggle, setToggle }) {
             return (
               <tr className="poppins-5 text-sm border-t-2 h-10">
                 <td>
-                  <Link to="/inventory/productdetails/">
+                  <Link to="/supplierDetails/">
                     {supplier.supplierName}
                   </Link>
                 </td>
