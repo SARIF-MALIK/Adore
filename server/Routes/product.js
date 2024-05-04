@@ -7,7 +7,7 @@ router.post("/add-product", async(req, res)=>{
     const [productName, productID, category, prodImg] = req.body; 
     const isExist = await ProductModel.findOne({productName: productName.toLowerCase()}); 
     if(isExist){
-        return res.status(400).send({
+        return res.status(409).send({
             success: false,
             msg: "product already exists", 
         })
@@ -16,3 +16,5 @@ router.post("/add-product", async(req, res)=>{
     await ProductModel.create({productName, productID, category, prodImg}); 
 
 })
+
+export default router; 

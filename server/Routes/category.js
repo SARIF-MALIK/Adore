@@ -3,6 +3,8 @@ import CategoryModel from "../models/category.model.js";
 
 const router = express.Router();
 
+// user must already signIn and have access as per role 
+
 router.post("/create-category", async (req, res) => {
   try {
     const categoryName = req.body.category.toLowerCase();
