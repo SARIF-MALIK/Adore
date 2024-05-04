@@ -17,7 +17,7 @@ const inventorySchema  = new mongoose.Schema({
     availability:{
         type: String,
         enum: ['In-stock', 'Out of stock', 'Low stock'],
-        default: 'in stock' // Default value when not specified
+        default: 'In-stock' // Default value when not specified
     },
     boughtPrice:{
         type:Number,
@@ -26,4 +26,4 @@ const inventorySchema  = new mongoose.Schema({
     },
 })
 
-export default mongoose.model('inventory', inventorySchema); 
+export default mongoose.model('Inventory', inventorySchema); 

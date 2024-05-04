@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import connectDB from "./config/db.js"
 import categoryRouter from "./Routes/category.js";
 import productRouter from "./Routes/product.js"; 
+import inventoryRouter from "./Routes/inventory.js";
 
 
 dotenv.config(); 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 8080
 app.use(express.json())
 app.use('/api/v1/category', categoryRouter)
 app.use('/api/v1/product', productRouter)
+app.use('/api/v1/inventory', inventoryRouter)
 
 app.listen(PORT, ()=>{
     console.log("server is connected to : ", PORT); 

@@ -86,8 +86,7 @@ function Landing() {
           </div>
         <div className="fixed text-center w-full m-auto h-80 lg:w-[600px] lg:absolute lg:left-36 lg:top-72 z-10 ">
           <h1 className="font-poppins text-3xl md:text-5xl leading-normal lg:leading-relaxed text-[#13161b] font-light">
-            Meet CMS — the simple way to manage portfolio &amp; showcase your
-            work in style
+            Meet CMS — the simple way to manage &amp; organize your Inventory 
           </h1>
         </div>
       </div>
