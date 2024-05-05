@@ -16,8 +16,7 @@ try {
     }
     const categoryObjId = await categoryModel.findOne({category: prodCategory}); 
     // console.log(prodCategory, prodImg); 
-    const newEntry = await ProductModel.create({productName, productID, productImg: prodImg, category: categoryObjId._id}); 
-    newEntry.save();
+    const newEntry = await ProductModel.create({productName, productID, productImg: prodImg, category: categoryObjId._id});
     // const data = await ProductModel.findOne(newEntry).populate('category');  
     // console.log(data) 
     res.status(201).send({
@@ -48,7 +47,7 @@ router.delete("/delete-product/:id", async (req, res)=>{
     }
 })
 
-router.patch("/edit-product", async(req, res)=>{
+router.patch("/edit-product/:id", async(req, res)=>{
     try {
         const { productName, prodImg } = req.body;
         const { id } = req.params;
