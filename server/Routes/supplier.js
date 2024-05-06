@@ -65,11 +65,26 @@ router.delete("/delete-supplier/:id", async (req, res)=>{
 
 router.patch("/edit-supplier/:id", async(req, res)=>{
     try {
-        const {supplierName, supplierImg, contact, email, type, categoryArr, productArr} = req.body;
+        const {supplierImg, contact, type, categoryArr, productArr} = req.body;
         const { id } = req.params;
+
+        const categoryObj = await categoryModel.find({}); 
+
+        const categoryObjIdsArr = categoryArr.map(item => {
+            const category = categoryObj.find(category => category.category === item.categoryName);
+            return category ? category._id : null; // If category is found, return its ObjectId, otherwise null
+        });
+        
+        const productObj = await productsModel.find({}); 
+
+        const productObjIdsPrice = productArr.map(item=>{
+          const product  = productObj.find(obj => obj.productName === item.productName); 
+          return product? {id : product._id, price : item.price, date: item.date} : null; 
+        })
+
         const category = await supplierModel.findByIdAndUpdate(
           id,
-          {supplierName, supplierImg, contact, email, type, category: categoryObjIdsArr, product: productArr},
+          {supplierImg, contact, type, category: categoryObjIdsArr, product: productObjIdsPrice},
           { new: true }
         );
         res.status(200).send({
