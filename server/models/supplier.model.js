@@ -1,6 +1,6 @@
 import mongoose, { mongo } from "mongoose"
 
-const supplierSchema = new mongoose.model({
+const supplierSchema = new mongoose.Schema({
     supplierName:{
         type:String, 
         required:true, 

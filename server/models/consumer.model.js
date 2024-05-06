@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from "mongoose"
 
-const consumerSchema = new mongoose.model({
+const consumerSchema = new mongoose.Schema({
     consumerName:{
         type:String, 
         required:true, 
@@ -11,9 +11,13 @@ const consumerSchema = new mongoose.model({
         ref:'Inventory'
     },
     product:{
-        type: Mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'Product'
     },
+    punchedBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 export default mongoose.model("consumer", consumerSchema);  

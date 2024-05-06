@@ -1,6 +1,6 @@
 import express from "express"
-import supplierModel from "../models/supplier.model";
-import categoryModel from "../models/category.model";
+import supplierModel from "../models/supplier.model.js";
+import categoryModel from "../models/category.model.js";
 
 const router = express.Router(); 
 
@@ -74,3 +74,5 @@ router.patch("/edit-supplier/:id", async(req, res)=>{
         });
       }
 })
+
+export default router; 
