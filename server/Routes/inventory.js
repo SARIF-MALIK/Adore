@@ -8,10 +8,14 @@ router.post("/add-inventory", async(req, res)=>{
 try {
     const {productName, productQty, expectedExpiry, thresholdValue, availability, boughtPrice} = req.body; 
     const productObj = await productsModel.findOne({productName: productName.toLowerCase()}); 
+    const isExist = await inventoryModel.findOne({product:productObj._id})
+    if(isExist){
+      return res.status(409).send('item already exists'); 
+    }
     const newEntry = await inventoryModel.create({product: productObj._id, qty: productQty, expiryDate: expectedExpiry, thresholdValue, availability, boughtPrice}); 
     newEntry.save();
     const data = await inventoryModel.findOne(newEntry).populate('product');  
-    console.log(data) 
+    // console.log(data) 
     res.status(201).send({
         success: true,
         msg: "inventory added successfully"
@@ -40,7 +44,7 @@ router.delete("/delete-inventory/:id", async (req, res)=>{
     }
 })
 
-router.patch("/edit-inventory", async(req, res)=>{
+router.patch("/edit-inventory/:id", async(req, res)=>{
     try {
         const {productQty, expectedExpiry, thresholdValue, availability, boughtPrice} = req.body; 
         const { id } = req.params;
