@@ -33,8 +33,10 @@ const supplierSchema = new mongoose.Schema({
     ], 
     product:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Product',
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'Product',
+            },
             price:{
               type:Number,      
             },

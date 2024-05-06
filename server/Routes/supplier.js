@@ -1,6 +1,7 @@
 import express from "express"
 import supplierModel from "../models/supplier.model.js";
 import categoryModel from "../models/category.model.js";
+import productsModel from "../models/products.model.js";
 
 const router = express.Router(); 
 
@@ -15,13 +16,24 @@ router.post("/add-supplier", async(req, res)=>{
             })
         }
 
-        const categoryObj = categoryModel.find({}); 
-        const categoryObjIdsArr = categoryArr.map(categoryName => {
-            const category = categoryObj.find(category => category.category === categoryName);
+        const categoryObj = await categoryModel.find({}); 
+
+        const categoryObjIdsArr = categoryArr.map(item => {
+            const category = categoryObj.find(category => category.category === item.categoryName);
             return category ? category._id : null; // If category is found, return its ObjectId, otherwise null
         });
+        // console.log(categoryObjIdsArr); 
+        
+        const productObj = await productsModel.find({}); 
 
-        const newEntry = new supplierModel({supplierName, supplierImg, contact, email, type, category: categoryObjIdsArr, product: productArr})
+        const productObjIdsPrice = productArr.map(item=>{
+          const product  = productObj.find(obj => obj.productName === item.productName); 
+          return product? {id : product._id, price : item.price, date: item.date} : null; 
+        })
+        console.log(productObjIdsPrice); 
+
+
+        const newEntry = new supplierModel({supplierName, supplierImg, contact, email, type, category: categoryObjIdsArr, product: productObjIdsPrice})
         newEntry.save(); 
         res.status(201).send({
             success: true,
