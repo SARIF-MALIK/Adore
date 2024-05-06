@@ -56,7 +56,7 @@ router.patch("/edit-inventory/:id", async(req, res)=>{
         res.status(200).send({
           success: true,
           message: "Inventory Updated Successfully",
-          category,
+          obj,
         });
       } catch (error) {
         console.log(error);

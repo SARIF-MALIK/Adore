@@ -1,6 +1,7 @@
 import express from "express"
 import ProductModel from "../models/products.model.js"
 import categoryModel from "../models/category.model.js";
+import productsModel from "../models/products.model.js";
 
 const router = express.Router(); 
 
@@ -51,7 +52,7 @@ router.patch("/edit-product/:id", async(req, res)=>{
     try {
         const { productName, prodImg } = req.body;
         const { id } = req.params;
-        const category = await CategoryModel.findByIdAndUpdate(
+        const updatedProduct = await productsModel.findByIdAndUpdate(
           id,
           { productName: productName, productImg: prodImg },
           { new: true }
@@ -59,8 +60,9 @@ router.patch("/edit-product/:id", async(req, res)=>{
         res.status(200).send({
           success: true,
           message: "Product Updated Successfully",
-          category,
+          updatedProduct,
         });
+        console.log(category)
       } catch (error) {
         console.log(error);
         res.status(500).send({
