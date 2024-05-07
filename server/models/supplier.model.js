@@ -5,6 +5,7 @@ const supplierSchema = new mongoose.Schema({
         type:String, 
         required:true, 
         trim:true,
+        lowercase:true,
     },
     supplierImg:{
         type:String,

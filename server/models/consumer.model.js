@@ -5,10 +5,11 @@ const consumerSchema = new mongoose.Schema({
         type:String, 
         required:true, 
         trim:true,
+        lowercase: true,
     },
     qty:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Inventory'
+        type: Number,
+        required: true,
     },
     product:{
         type: mongoose.Schema.Types.ObjectId,
