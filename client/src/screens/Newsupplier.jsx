@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { LuUser2 } from "react-icons/lu";
 import axios from "axios"; // Import Axios for making HTTP requests
-import { IKContext, IKUpload } from 'imagekitio-react'
 
 function Newsupplier() {
   const [image, setImage] = useState(null);
@@ -15,24 +14,17 @@ function Newsupplier() {
     email: "",
     contact: "",
     type: "notTakingReturn", // Default value
+    supplierImg: ""
   });
 
   const imgUploadToken = async () => {
     try {
       // Make a GET request to fetch image signature
-      const response = await axios.get(
-        "http://localhost:8080/api/v1/supplier/img-signature",
-        {
-          headers: {
-            Authorization: "Bearer your-access-token",
-            CustomHeader: "CustomValue",
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:8080/api/v1/supplier/img-signature");
 
       // Handle the response
       const { signature, expire, token, publicKey } = response.data;
-      console.log(signature, expire, token, publicKey);
+      // console.log(signature, expire, token, publicKey);
       return { signature, expire, token, publicKey };
     } catch (error) {
       // Handle errors if any
@@ -44,40 +36,54 @@ function Newsupplier() {
 
   const imgUpload = async () => {
     const { signature, expire, token, publicKey } = await imgUploadToken();
-    var imagekit = new ImageKit({
-      signature: signature,
-      expire: expire,
-      token: token,
-    });
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", image.content);
+      formData.append("fileName", image.name);
+      formData.append("publicKey", publicKey);
+      formData.append("signature", signature || "");
+        formData.append("expire", expire || 0);
+        formData.append("token", token);
+
+      const response = await axios.post(
+        'https://upload.imagekit.io/api/v1/files/upload',
+        formData,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`, // Include the one-time token in the Authorization header
+            'Content-Type': 'multipart/form-data'
+          },
+        }
+      );
+      console.log(response.data); // Log the response from ImageKit
+    } catch (error) {
+      console.error('Error in post request to imageKit:', error);
+    }
 
   };
-  const publicKey = "IMGKIT_PUBLIC_API=public_P9pHPLKrHDba8BxyPH4tPVHFUgE=";
-  const urlEndpoint = "https://ik.imagekit.io/sarifimgkit";
-  const authenticator = async () => {
-    try {
-      // You can also pass headers and validate the request source in the backend, or you can use headers for any other use case.
-      const headers = {
-        'Authorization': 'Bearer your-access-token',
-        'CustomHeader': 'CustomValue'
-      };
-      const response = await fetch('server_endpoint', {
-          headers
-      });
-      if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Request failed with status ${response.status}: ${errorText}`);
-      }
-      const data = await response.json();
-      const { signature, expire, token } = data;
-      return { signature, expire, token };
-    } catch (error) {
-        throw new Error(`Authentication request failed: ${error.message}`);
-    }
-  };
+
 
   const handleFile = (file) => {
     setImage(file);
     setPreviewURL(URL.createObjectURL(file));
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      // const fileContent = event.target.result;
+      const base64String = event.target.result;
+      console.log("Base64 encoded image:", base64String);
+      setImage({
+        name: file.name,
+        type: file.type,
+        content: base64String, // Content is now in buffer format
+      });
+      // console.log("File content in buffer format:", fileContent); 
+    };
+    
+    reader.readAsDataURL(file); 
+    // reader.readAsArrayBuffer(file); // Read the file as array buffer
+    
   };
 
   const handleOndragOver = (e) => {
@@ -97,10 +103,14 @@ function Newsupplier() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('image', image); 
+    if(image){
+      const res = await imgUpload(); 
+      console.log(res);
+      setFormData(...formData, {supplierImg:res.url})
+    }
     // Send form data to backend
     console.log(formData);
-    console.log();
     // try {
     //   const response = await axios.post('/your-backend-api-url', formData);
     //   console.log(response.data); // Log response from backend
@@ -272,11 +282,7 @@ function Newsupplier() {
                 </label>
               </div>
             </div>
-
-            <IKContext publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator} >
-        <IKUpload fileName="abc.jpg" tags={["tag1"]} useUniqueFileName={true} isPrivateFile= {false} />
-      </IKContext>
-
+            
             {/* Form Buttons */}
             <div className="flex  justify-end pt-3 poppins-5 text-sm text-[#48505E] gap-3">
               <button type="button" className="btn">

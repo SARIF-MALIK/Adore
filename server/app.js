@@ -9,11 +9,14 @@ import consumerRouter from "./Routes/consumer.js";
 import supplierRouter from "./Routes/supplier.js";
 import orderRouter from "./Routes/order.js";
 import userRouter from "./Routes/user.js";
+import cors from "cors"; 
 
 dotenv.config();
 connectDB();
 
 const app = express();
+app.use(cors()); 
+
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
