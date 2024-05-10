@@ -2,8 +2,20 @@ import express from "express";
 import supplierModel from "../models/supplier.model.js";
 import categoryModel from "../models/category.model.js";
 import productsModel from "../models/products.model.js";
+import ImageKit from "imagekit";
 
 const router = express.Router();
+
+router.get("/img-signature", async (req, res) => {
+  var imagekit = new ImageKit({
+    publicKey: process.env.IMGKIT_PUBLIC_API,
+    privateKey: process.env.IMGKIT_PRIVATE_API,
+    urlEndpoint: process.env.IMGKIT_URL_ENDPOINT,
+  });
+  var authenticationParameters = imagekit.getAuthenticationParameters();
+  authenticationParameters.publicKey = process.env.IMGKIT_PUBLIC_API;
+  res.send(JSON.stringify(authenticationParameters));
+});
 
 router.post("/add-supplier", async (req, res) => {
   try {
