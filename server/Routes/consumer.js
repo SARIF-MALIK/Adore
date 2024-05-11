@@ -17,20 +17,27 @@ router.post("/add-consumer", async(req, res)=>{
                 msg: "product does not exists", 
             })
         }
-        if(product.qty < qtyPicked){
+        // get the email of signed In user 
+        const punchedByUser = await userModel.findOne({email: punchedBy.toLowerCase()});
+        const inventory = await inventoryModel.findOne({product: product._id}).populate('product'); 
+        if(!inventory || inventory.qty === 0) return res.status(409).send({
+            success: false,
+            msg: "out of stock", 
+        })
+        if(inventory.qty < qtyPicked){
             return res.status(409).send({
                 success: false,
                 msg: "low stock", 
             })
         }
-        const punchedByUser = userModel.findOne({email: punchedBy}); 
-        const inventory = inventoryModel.findOne({product: productName}).populate('product'); 
         inventory.qty -= qtyPicked; 
         inventory.save(); 
+        console.log(inventory); 
         const newEntry = await consumerModel.create({consumerName, qty: qtyPicked, product: product._id, punchedBy: punchedByUser._id});
 
         res.status(201).send({
             success: true,
+            newEntry,
             msg: "consumer saved successfully"
         })
     } catch (error) {

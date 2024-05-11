@@ -44,14 +44,20 @@ router.delete("/delete-user", async (req, res)=>{
     }
 })
 
+// password encryption 
 router.patch("/edit-user", async(req, res)=>{
     try {
         const { userName, email, password, role, userImg } = req.body;
-        const category = await CategoryModel.UpdateOne(
-            id,
+        const entry = await userModel.findOneAndUpdate(
+            {email: email},
             { name: userName, password, role, userImg },
             { new: true }
           );
+          res.status(200).send({
+            success: true, 
+            entry,
+            message: "user updated successfully"
+          })
     } catch (error) {
         console.log(error);
         res.status(500).send({

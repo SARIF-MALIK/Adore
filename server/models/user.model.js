@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
         type: String, 
         required: true,
         trim: true,
+        lowercase: true,
     }, 
     email:{
         type: String,
@@ -17,8 +18,7 @@ const UserSchema = new mongoose.Schema({
     }, 
     role: {
         type: String,
-        enum: ["admin", "superAdmin", "manager", "viewer"], 
-        required: true,
+        enum: ["admin", "superAdmin", "manager", "viewer"],
         default: "viewer", 
     }
 }, {timestamps: true})

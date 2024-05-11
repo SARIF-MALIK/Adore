@@ -27,7 +27,7 @@ function Suppliers() {
    
       <div className="">
       {
-        toggle && <Newsupplier/> 
+        toggle && <Newsupplier toggle={toggle} setToggle={setToggle}/> 
       }
       </div>
     </div>
