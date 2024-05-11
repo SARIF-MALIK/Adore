@@ -35,27 +35,25 @@ router.post("/add-supplier", async (req, res) => {
         msg: "supplier with same details already exists",
       });
     }
-
+    console.log(req.body); 
     const categoryObj = await categoryModel.find({});
 
     const categoryObjIdsArr = categoryArr.map((item) => {
       const category = categoryObj.find(
-        (category) => category.category === item.categoryName
+        (dbItem) => dbItem.category === item
       );
       return category ? category._id : null; // If category is found, return its ObjectId, otherwise null
     });
-    // console.log(categoryObjIdsArr);
-
-    const productObj = await productsModel.find({});
-
-    const productObjIdsPrice = productArr.map((item) => {
+    
+    const productObj = productArr? await productsModel.find({}): null;
+    const productObjIdsPrice = productObj? productArr.map((item) => {
       const product = productObj.find(
         (obj) => obj.productName === item.productName
       );
       return product
         ? { id: product._id, price: item.price, date: item.date }
         : null;
-    });
+    }) : null;
     console.log(productObjIdsPrice);
 
     const newEntry = new supplierModel({

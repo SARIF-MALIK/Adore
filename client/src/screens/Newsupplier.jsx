@@ -1,27 +1,44 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useNavigate } from "react";
 import { LuUser2 } from "react-icons/lu";
-import axios from "axios"; // Import Axios for making HTTP requests
+import axios from "axios";
+import { resizeImage } from "./components/ResizeImg";
 
-function Newsupplier() {
+function Newsupplier({ toggle, setToggle }) {
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewURL] = useState("");
   const fileInput = useRef(null);
   const [formData, setFormData] = useState({
     supplierName: "",
-    product: "",
-    category: "",
-    price: "",
-    email: "",
     contact: "",
-    type: "notTakingReturn", // Default value
-    supplierImg: ""
+    email: "",
+    type: "",
+    product: "",
+    categoryArr: "",
+    price: "",
   });
+  const [categoriesDB, setCategoriesDB] = useState(null);
+
+  useEffect(() => {
+    const fetchCategoriesDB = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/v1/category/getall-categories"
+        );
+        setCategoriesDB(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("error in fetching categories from database", error);
+      }
+    };
+    fetchCategoriesDB();
+  }, []);
 
   const imgUploadToken = async () => {
     try {
       // Make a GET request to fetch image signature
-      const response = await axios.get("http://localhost:8080/api/v1/supplier/img-signature");
-
+      const response = await axios.get(
+        "http://localhost:8080/api/v1/supplier/img-signature"
+      );
       // Handle the response
       const { signature, expire, token, publicKey } = response.data;
       // console.log(signature, expire, token, publicKey);
@@ -36,39 +53,52 @@ function Newsupplier() {
 
   const imgUpload = async () => {
     const { signature, expire, token, publicKey } = await imgUploadToken();
-    
+
     try {
       const formData = new FormData();
       formData.append("file", image.content);
       formData.append("fileName", image.name);
       formData.append("publicKey", publicKey);
       formData.append("signature", signature || "");
-        formData.append("expire", expire || 0);
-        formData.append("token", token);
+      formData.append("expire", expire || 0);
+      formData.append("token", token);
 
       const response = await axios.post(
-        'https://upload.imagekit.io/api/v1/files/upload',
+        "https://upload.imagekit.io/api/v1/files/upload",
         formData,
         {
           headers: {
-            'Authorization': `Bearer ${token}`, // Include the one-time token in the Authorization header
-            'Content-Type': 'multipart/form-data'
+            Authorization: `Bearer ${token}`, // Include the one-time token in the Authorization header
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      console.log(response.data); // Log the response from ImageKit
+      //console.log(response.data); // Log the response from ImageKit
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        supplierImg: response.data.url
+      }));
+      console.log(response.data.url)
+      return response.data;
     } catch (error) {
-      console.error('Error in post request to imageKit:', error);
+      console.error("Error in post request to imageKit:", error);
     }
-
   };
 
-
-  const handleFile = (file) => {
+  const handleFile = async (file) => {
     setImage(file);
     setPreviewURL(URL.createObjectURL(file));
-    const reader = new FileReader();
+    // reduce img width and height which auto return base64 in setImage
+    await new Promise((resolve) => {
+      resizeImage(file, 300, 300, "JPEG", 70, 0, "base64", setImage)
+        resolve('done')
+    });
+    // await resizeImage(file, 300, 300, "JPEG", 70, 0, "base64", setImage)
 
+    // manual conversion of img file to base64 as req by imageKit
+
+    /*
+    const reader = new FileReader();
     reader.onload = (event) => {
       // const fileContent = event.target.result;
       const base64String = event.target.result;
@@ -83,7 +113,7 @@ function Newsupplier() {
     
     reader.readAsDataURL(file); 
     // reader.readAsArrayBuffer(file); // Read the file as array buffer
-    
+    */
   };
 
   const handleOndragOver = (e) => {
@@ -98,36 +128,52 @@ function Newsupplier() {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // If the field is "category", split the value by comma
+  const updatedValue = name === "categoryArr" ? value.split(",") : value;
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    [name]: updatedValue,
+  }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('image', image); 
-    if(image){
-      const res = await imgUpload(); 
-      console.log(res);
-      setFormData(...formData, {supplierImg:res.url})
+    // console.log('image in react state hook', image);
+    let imgUrl = ''; 
+    if (image) {
+      try {
+        const res = await imgUpload();
+        imgUrl = res.url; 
+        // console.log(res.url);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+      // console.log(formData); 
     }
-    // Send form data to backend
-    console.log(formData);
-    // try {
-    //   const response = await axios.post('/your-backend-api-url', formData);
-    //   console.log(response.data); // Log response from backend
-    //   // Reset form fields and state
-    //   setFormData({
-    //     supplierName: '',
-    //     product: '',
-    //     category: '',
-    //     price: '',
-    //     contact: '',
-    //     type: 'notTakingReturn' // Reset type to default value
-    //   });
-    //   setImage(null);
-    //   setPreviewURL('');
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+
+      try {
+        // console.log(formData);
+        const response = await axios.post('http://localhost:8080/api/v1/supplier/add-supplier/', {...formData, supplierImg: imgUrl});
+        console.log(response.data); // Log response from backend
+        // Reset form fields and state
+        setFormData({
+          supplierName: '',
+          product: '',
+          category: '',
+          price: '',
+          contact: '',
+          email: '',
+          type: '' // Reset type to default value
+        });
+        setImage(null);
+        setPreviewURL('');
+        useNavigate('/suppliers')
+        setToggle(!toggle)
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    
   };
 
   return (
@@ -187,6 +233,7 @@ function Newsupplier() {
                 placeholder="Enter supplier name"
                 value={formData.supplierName}
                 onChange={handleChange}
+                required
               />
             </div>
             {/* Contact Number */}
@@ -200,6 +247,7 @@ function Newsupplier() {
                 placeholder="Enter contact number"
                 value={formData.contact}
                 onChange={handleChange}
+                required
               />
             </div>
             {/* Email */}
@@ -213,21 +261,37 @@ function Newsupplier() {
                 placeholder="Enter email"
                 value={formData.email}
                 onChange={handleChange}
+                required
               />
             </div>
 
             {/* Category */}
             <div className="flex justify-between items-center">
-              <label htmlFor="category">Category</label>
-              <input
-                type="text"
-                id="category"
-                name="category"
-                className="border-2 rounded-lg h-8 border-1 outline-none border-[#D0D5DD] p-2"
-                placeholder="Select product category"
-                value={formData.category}
-                onChange={handleChange}
-              />
+              {categoriesDB && (
+                <>
+                  <label htmlFor="category">Category</label>
+                  <input
+                    type="text"
+                    id="category"
+                    name="categoryArr"
+                    className="border-2 rounded-lg h-8 border-1 outline-none border-[#D0D5DD] p-2"
+                    placeholder="Select product category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    list="categoryList"
+                    required
+                  />
+                  <datalist id="categoryList">
+                    {categoriesDB.map((item) => {
+                      return(
+                      <option key={item} value={item}>
+                        {item.value}
+                      </option>
+                      )
+                    })}
+                  </datalist>
+                </>
+              )}
             </div>
             {/* Product */}
             <div className="flex justify-between items-center">
@@ -264,8 +328,8 @@ function Newsupplier() {
                   <input
                     type="radio"
                     name="type"
-                    value="notTakingReturn"
-                    checked={formData.type === "notTakingReturn"}
+                    value="Not Taking Return"
+                    checked={formData.type === "Not Taking Return"}
                     onChange={handleChange}
                   />
                   Not Taking Return
@@ -274,18 +338,18 @@ function Newsupplier() {
                   <input
                     type="radio"
                     name="type"
-                    value="takingReturn"
-                    checked={formData.type === "takingReturn"}
+                    value="Taking Return"
+                    checked={formData.type === "Taking Return"}
                     onChange={handleChange}
                   />
                   Taking Return
                 </label>
               </div>
             </div>
-            
+
             {/* Form Buttons */}
             <div className="flex  justify-end pt-3 poppins-5 text-sm text-[#48505E] gap-3">
-              <button type="button" className="btn">
+              <button type="button" className="btn"  onClick={() => setToggle(!toggle)}>
                 Discard
               </button>
               <button type="submit" className="btn bg-[#1366D9] text-white">
