@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const ProductsData = [
   {
     id: 1,
@@ -1024,3 +1026,5 @@ export const BSProduct = [
     increaseBy: "1%",
   },
 ]
+
+

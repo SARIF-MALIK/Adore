@@ -73,12 +73,7 @@ function Newsupplier({ toggle, setToggle }) {
           },
         }
       );
-      //console.log(response.data); // Log the response from ImageKit
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        supplierImg: response.data.url
-      }));
-      console.log(response.data.url)
+      //console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error in post request to imageKit:", error);

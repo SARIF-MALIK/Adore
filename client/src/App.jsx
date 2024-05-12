@@ -29,7 +29,7 @@ function App() {
           <Route path='/reports/categoryseeall' element={<CategorySeeAll />} />
           <Route path='/reports/productseeall' element={<ProductSeeAll />} />
           <Route path='/suppliers' element={<Suppliers />} />
-          <Route path='/supplierDetails' element={<SupplierDetails />} />
+          <Route path='/supplierDetails/:id' element={<SupplierDetails />} />
           <Route path='/orders' element={<Orders />} />
           <Route path='/branch' element={<ManageBranch />} />
           <Route path='/login' element={<Login />} />

@@ -17,6 +17,27 @@ router.get("/img-signature", async (req, res) => {
   res.send(JSON.stringify(authenticationParameters));
 });
 
+router.get('/data-supplier',async (req, res)=>{
+  try {
+    const supplierData = await supplierModel.find({}).sort({ _id: -1 }).populate('category');
+    res.send(supplierData); 
+  } catch (error) {
+    console.log(error); 
+    res.send(error);     
+  }
+})
+
+router.get('/data-supplier/:id', async(req, res)=>{
+  try {
+    const {id} = req.params; 
+    const supplierData = await supplierModel.findById(id).populate('category');
+    res.send(supplierData); 
+  } catch (error) {
+    console.log(error); 
+    res.send(error);     
+  }
+})
+
 router.post("/add-supplier", async (req, res) => {
   try {
     const {
@@ -40,7 +61,7 @@ router.post("/add-supplier", async (req, res) => {
 
     const categoryObjIdsArr = categoryArr.map((item) => {
       const category = categoryObj.find(
-        (dbItem) => dbItem.category === item
+        (dbItem) => dbItem.category === item.trim()
       );
       return category ? category._id : null; // If category is found, return its ObjectId, otherwise null
     });
