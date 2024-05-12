@@ -209,13 +209,13 @@ function Supplier({ toggle, setToggle }) {
       </div>
       <div>
         <div className="flex justify-between pt-3 poppins-5 text-sm text-[#48505E]">
-          <button className="btn" onClick={handlePrevClick} disabled={pageIndex === 0}>
+          <button className="btn hover:cursor-pointer" onClick={handlePrevClick} disabled={pageIndex === 0}>
             Previous
           </button>
           <p className="">
             Page {pageIndex + 1} of {totalPages}
           </p>
-          <button className="btn" onClick={handleNextClick} disabled={pageIndex === totalPages - 1}>
+          <button className="btn hover:cursor-pointer" onClick={handleNextClick} disabled={pageIndex === totalPages - 1}>
             Next
           </button>
         </div>

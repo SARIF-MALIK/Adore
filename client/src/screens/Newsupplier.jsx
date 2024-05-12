@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState, useNavigate } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LuUser2 } from "react-icons/lu";
 import axios from "axios";
 import { resizeImage } from "./components/ResizeImg";
+import { useNavigate } from "react-router-dom";
 
 function Newsupplier({ toggle, setToggle }) {
   const [image, setImage] = useState(null);
@@ -17,7 +18,7 @@ function Newsupplier({ toggle, setToggle }) {
     price: "",
   });
   const [categoriesDB, setCategoriesDB] = useState(null);
-
+  const navigate = useNavigate(); 
   useEffect(() => {
     const fetchCategoriesDB = async () => {
       try {
@@ -125,10 +126,10 @@ function Newsupplier({ toggle, setToggle }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     // If the field is "category", split the value by comma
-  const updatedValue = name === "categoryArr" ? value.split(",") : value;
+  const updatedValue = name === "categoryArr" ? value.trim().split(",") : value;
   setFormData((prevFormData) => ({
     ...prevFormData,
-    [name]: updatedValue,
+    [name]: updatedValue.toLowerCase(),
   }));
   };
 
@@ -163,10 +164,11 @@ function Newsupplier({ toggle, setToggle }) {
         });
         setImage(null);
         setPreviewURL('');
-        useNavigate('/suppliers')
-        setToggle(!toggle)
       } catch (error) {
         console.error("Error:", error);
+      }finally{
+        navigate('/suppliers')
+        setToggle(!toggle)
       }
     
   };

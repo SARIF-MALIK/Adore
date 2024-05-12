@@ -121,28 +121,24 @@ router.patch("/edit-supplier/:id", async (req, res) => {
       supplierImg,
       contact,
       email,
-      type,
-      categoryArr,
-      productArr,
     } = req.body;
     const { id } = req.params;
-    const category = await supplierModel.findByIdAndUpdate(
+    console.log(req.body); 
+
+    const updatedSupplier = await supplierModel.findByIdAndUpdate(
       id,
       {
         supplierName,
         supplierImg,
         contact,
         email,
-        type,
-        category: categoryObjIdsArr,
-        product: productArr,
       },
       { new: true }
     );
     res.status(200).send({
       success: true,
       message: "Supplier details updated Successfully",
-      category,
+      updatedSupplier,
     });
   } catch (error) {
     console.log(error);
