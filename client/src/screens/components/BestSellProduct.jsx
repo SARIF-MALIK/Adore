@@ -7,7 +7,7 @@ function BestSellProduct() {
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
         <div>
-          <h1 className="poppins-5 text-lg py-5">Most consumed product</h1>
+          <h1 className="poppins-5 text-lg py-5">Best selling product</h1>
         </div>
         <div className="flex gap-3">
           <Link to="productSeeAll">See All</Link>
@@ -20,9 +20,7 @@ function BestSellProduct() {
           >
             <th className="poppins-4 text-sm text-start">Product</th>
             <th className="poppins-4 text-sm text-start">Product ID</th>
-            <th className="poppins-4 text-sm text-start">Category</th>
-            <th className="poppins-4 text-sm text-start">Remaining Quantity</th>
-            <th className="poppins-4 text-sm text-start">Incurred Cost</th>
+            <th className="poppins-4 text-sm text-start">Turn Over</th>
             <th className="poppins-4 text-sm text-start">Increase By</th>
           </tr>
 
@@ -32,8 +30,8 @@ function BestSellProduct() {
                 <tr className="poppins-5 text-sm border-t-2 h-10">
                   <td><Link to="/inventory/productdetails/">{item.product}</Link></td>
                   <td>{item.productId}</td>
-                  <td>{item.category}</td>
-                  <td>{item.remainingQuantity}</td>
+                  {/* <td>{item.category}</td> */}
+                  {/* <td>{item.remainingQuantity}</td> */}
                   <td>{item.turnOver}</td>
                   <td className="text-[#10A760]">{item.increaseBy}</td>
                 </tr>

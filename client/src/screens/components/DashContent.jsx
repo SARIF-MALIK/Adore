@@ -20,10 +20,10 @@ function DashContent() {
 
   return (
     <div className="container max-w-full bg-white p-5 rounded-lg">
-    <div className="flex justify-between">
-      <h1 className="text-2xl font-bold mb-1">Dashboard</h1>
-     
-    </div>
+      <div className="flex justify-between">
+        <h1 className="text-2xl font-bold mb-1">Dashboard</h1>
+
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Total Users */}
@@ -32,7 +32,7 @@ function DashContent() {
             <FaUsers className="text-3xl text-gray-600" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Total Users</h3>
+            <h3 className="text-lg font-semibold mb-2">Total Products</h3>
             <p className="text-gray-600">1000</p>
           </div>
         </div>
@@ -43,7 +43,7 @@ function DashContent() {
             <FaClipboardList className="text-3xl text-gray-600" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Total Posts</h3>
+            <h3 className="text-lg font-semibold mb-2">Category</h3>
             <p className="text-gray-600">500</p>
           </div>
         </div>
@@ -54,7 +54,7 @@ function DashContent() {
             <FaComment className="text-3xl text-gray-600" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Total Comments</h3>
+            <h3 className="text-lg font-semibold mb-2">Value</h3>
             <p className="text-gray-600">2000</p>
           </div>
         </div>

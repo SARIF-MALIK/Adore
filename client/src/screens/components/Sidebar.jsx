@@ -2,12 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoHomeOutline } from "react-icons/io5";
 import { LiaLuggageCartSolid } from "react-icons/lia";
-import { IoIosStats } from "react-icons/io";
-import { FaRegUserCircle } from "react-icons/fa";
+import { IoIosStats, IoMdPerson } from "react-icons/io";
+import { FaProductHunt, FaRegUserCircle } from "react-icons/fa";
 import { IoLogoDropbox } from "react-icons/io";
 import { LuClipboardSignature } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
+import { BiCategory } from "react-icons/bi";
+import { RiProductHuntLine } from "react-icons/ri";
+
+
 
 
 function Sidebar() {
@@ -16,11 +20,14 @@ function Sidebar() {
       <ul className='poppins-5 flex flex-col'>
         <NavLink exact to="/" className='poppins-6 text-xl text-[#1570EF] mb-10 mx-2' >CMS</NavLink>
         <CustomNavLink to="/dashboard"><IoHomeOutline size={24} />Dashboard</CustomNavLink>
-        <CustomNavLink to="/inventory"><LiaLuggageCartSolid size={24} />inventory</CustomNavLink>
+        <CustomNavLink to="/product"><RiProductHuntLine size={24} />Product</CustomNavLink>
+        <CustomNavLink to="/category"><BiCategory size={24} />Category</CustomNavLink>
+        <CustomNavLink to="/consumers"><IoMdPerson size={24} />Consumers</CustomNavLink>
+        <CustomNavLink to="/inventory"><LiaLuggageCartSolid size={24} />Inventory</CustomNavLink>
         <CustomNavLink to="/reports"><IoIosStats size={24} />reports</CustomNavLink>
         <CustomNavLink to="/suppliers"><FaRegUserCircle size={24} />suppliers</CustomNavLink>
         <CustomNavLink to="/orders"><IoLogoDropbox size={24} />orders</CustomNavLink>
-        <CustomNavLink to="/branch"><LuClipboardSignature size={24} />branch</CustomNavLink>
+        {/* <CustomNavLink to="/branch"><LuClipboardSignature size={24} />branch</CustomNavLink> */}
       </ul>
 
       <div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FiEdit2 } from "react-icons/fi";
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import { MdDelete } from 'react-icons/md';
 
 
 const SupplierDEtails = () => {
@@ -29,15 +30,17 @@ const SupplierDEtails = () => {
                                     <FiEdit2 size={22} />
                                     Edit
                                 </button>
-                                <button className="btn">Delete</button>
+                                <button class=" btn flex items-center justify-center gap-2">
+                                    <MdDelete />Delete
+                                </button>
                             </div>
                         </div>
                         <div>
                             <div className="border-b-2	h-16 poppins-4 text-[16px] text-[#48505E]">
                                 <ul className="flex ">
                                     <li className='m-5'>Overview</li>
-                                    <li className='m-5'>Purchases</li>
-                                    <li className='m-5'>Adjustments</li>
+                                    <li className='m-5'>Deal In</li>
+                                    {/* <li className='m-5'>Adjustments</li> */}
                                     <li className='m-5'>History</li>
                                 </ul>
                             </div>

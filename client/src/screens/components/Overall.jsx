@@ -24,12 +24,12 @@ function Overall() {
                 </div>
                 <div className='flex flex-col gap-3'>
                 <h2 className='poppins-5'>{totalProducts.revenue}</h2>
-                <p className='poppins-4 text-[#858D9D] text-sm'>Revenue</p>
+                <p className='poppins-4 text-[#858D9D] text-sm'>in Value</p>
                 </div>
                 </div>
             </div>
             <div className="Most Used flex flex-col gap-3">
-                <h2 className='poppins-6 text-[#845EBC]'>Most Used</h2>
+                <h2 className='poppins-6 text-[#845EBC]'>Most Consumed</h2>
                 <div className='flex gap-5 lg:gap-14'>
                 <div className='flex flex-col gap-3'>
                 <h2 className='poppins-5'>{mostUsed.count}</h2>
@@ -47,7 +47,7 @@ function Overall() {
                <div className='flex gap-5 lg:gap-14'>
                <div className='flex flex-col gap-3'>
                 <h2 className='poppins-5'>{lowStocks.ordered}</h2>
-                <p className='poppins-4 text-[#858D9D] text-sm'>Ordered</p>
+                <p className='poppins-4 text-[#858D9D] text-sm'>low in stock</p>
                 </div>
                 <div className='flex flex-col gap-3'>
                 <h2 className='poppins-5'>{lowStocks.notInStock}</h2>

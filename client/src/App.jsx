@@ -13,6 +13,9 @@ import Landing from './screens/Landing'
 import CategorySeeAll from './screens/components/CategorySeeAll'
 import ProductSeeAll from './screens/components/ProductSeeAll'
 import SupplierDetails from './screens/components/SupplierDetails'
+import Consumers from './screens/Consumers'
+import Product from './screens/Product'
+import Category from './screens/Category'
 
 
 function App() {
@@ -23,7 +26,10 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Landing />} />
           <Route exact path='/dashboard' element={<Dashboard />} />
+          <Route exact path='/product' element={<Product />} />
+          <Route exact path='/category' element={<Category />} />
           <Route path='/inventory' element={<Inventory />} />
+          <Route path='/consumers' element={<Consumers />} />
           <Route path='/inventory/productdetails' element={<ProductDetails />} />
           <Route path='/reports' element={<Reports />} />
           <Route path='/reports/categoryseeall' element={<CategorySeeAll />} />

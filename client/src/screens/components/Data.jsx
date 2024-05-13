@@ -1024,3 +1024,384 @@ export const BSProduct = [
     increaseBy: "1%",
   },
 ]
+
+export const ProductData = [
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+  {
+    productname: "tomato",
+    productId: 101,
+    category: "vegetable",
+    productImg: "img",
+  },
+  {
+    productname: "apple",
+    productId: 287,
+    category: "Fruit",
+    productImg: "img",
+  },
+]
+
+export const ConsumerData = [
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+  {
+    name: "aakash",
+    product: "vegetable",
+    quantity: 20,
+    punchedBy: "gaurav"
+  },
+  {
+    name: "Jeffrey Dahmer",
+    product: "Body",
+    quantity: 69,
+    punchedBy: "unknown"
+  },
+  {
+    name: "Elon Musk",
+    product: "Car",
+    quantity: 47,
+    punchedBy: "jitesh"
+  },
+]
+
+export const CategoryData =[
+  {
+    name:"Kendrick dot",
+    id:241
+  },
+  {
+    name:"cole world",
+    id:378
+  },
+  {
+    name:"Kendrick dot",
+    id:241
+  },
+  {
+    name:"cole world",
+    id:378
+  },
+  {
+    name:"Kendrick dot",
+    id:241
+  },
+  {
+    name:"cole world",
+    id:378
+  },
+]
