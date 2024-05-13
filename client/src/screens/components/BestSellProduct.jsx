@@ -30,8 +30,6 @@ function BestSellProduct() {
                 <tr className="poppins-5 text-sm border-t-2 h-10">
                   <td><Link to="/inventory/productdetails/">{item.product}</Link></td>
                   <td>{item.productId}</td>
-                  {/* <td>{item.category}</td> */}
-                  {/* <td>{item.remainingQuantity}</td> */}
                   <td>{item.turnOver}</td>
                   <td className="text-[#10A760]">{item.increaseBy}</td>
                 </tr>

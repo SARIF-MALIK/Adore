@@ -2,12 +2,20 @@ import React from 'react'
 import { CategoryData } from './Data'
 import { Link } from 'react-router-dom'
 
-const CategoryInfo = () => {
+const CategoryInfo = ({ toggle, setToggle }) => {
     return (
         <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
             <div className="header flex justify-between items-center">
                 <div>
                     <h1 className="poppins-5 text-lg py-5">Category</h1>
+                </div>
+                <div className="flex gap-3">
+                    <button
+                        className="btn bg-[#1366D9] text-white"
+                        onClick={() => setToggle(!toggle)}
+                    >
+                        Add Category
+                    </button>
                 </div>
             </div>
             <div>
@@ -16,8 +24,6 @@ const CategoryInfo = () => {
                     >
                         <th className="poppins-4 text-sm text-start">Name</th>
                         <th className="poppins-4 text-sm text-start"> ID</th>
-                        {/* <th className="poppins-4 text-sm text-start">category</th>
-                        <th className="poppins-4 text-sm text-start">Product img</th> */}
                     </tr>
 
                     {
@@ -26,8 +32,6 @@ const CategoryInfo = () => {
                                 <tr className="poppins-5 text-sm border-t-2 h-16">
                                     <td>{item.name}</td>
                                     <td>{item.id}</td>
-                                    {/* <td>{item.category}</td>
-                                    <td className="text-[#10A760]">{item.productImg}</td> */}
                                 </tr>
                             )
                         })

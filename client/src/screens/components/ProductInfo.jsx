@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductData } from './Data'
 
-const ProductInfo = () => {
+const ProductInfo = ({toggle, setToggle}) => {
     const [pageIndex, setPageIndex] = useState(0);
     const ProductPerPage = 13;
     const startIndex = pageIndex * ProductPerPage;
@@ -22,7 +22,15 @@ const ProductInfo = () => {
         <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
             <div className="header flex justify-between items-center">
                 <div>
-                    <h1 className="poppins-5 text-lg py-5">Products Information</h1>
+                    <h1 className="poppins-5 text-lg py-5">Products</h1>
+                </div>
+                <div className="flex gap-3">
+                    <button
+                        className="btn bg-[#1366D9] text-white"
+                        onClick={() => setToggle(!toggle)}
+                    >
+                        Add Product
+                    </button>
                 </div>
             </div>
             <div>
@@ -39,7 +47,7 @@ const ProductInfo = () => {
                         VisibleProduct.slice(0, 8).map(item => {
                             return (
                                 <tr className="poppins-5 text-sm border-t-2 h-20">
-                                    <td>{item.productname}</td>
+                                    <td><Link to="/inventory/productdetails">{item.productname}</Link></td>
                                     <td>{item.productId}</td>
                                     <td>{item.category}</td>
                                     <td className="text-[#10A760]">{item.productImg}</td>

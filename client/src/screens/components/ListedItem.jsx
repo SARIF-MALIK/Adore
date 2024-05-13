@@ -15,7 +15,7 @@ function ListedItem() {
             <FiEdit2 size={22} />
             Edit
           </button>
-          <button className="btn">Download</button>
+          <button className="btn">Delete</button>
         </div>
       </div>
       <div>
