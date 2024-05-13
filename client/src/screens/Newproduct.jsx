@@ -1,10 +1,14 @@
 import React, { useRef, useState } from "react";
 
 function Newproduct() {
+  const [productData, setProductData] = useState({productName: "", productID: "", category:"", productCategory:"", });  
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const fileInput = useRef(null); 
 
+  const inputChange = (e)=>{
+    setProductData({...productData, [e.target.name]:e.target.value}); 
+  }
   const handleFile = (file) => {
     setImage(file);
     setPreviewUrl(URL.createObjectURL(file));
@@ -18,6 +22,7 @@ function Newproduct() {
     let imageFile = e.dataTransfer.files[0];
     handleFile(imageFile);
   };
+
   return (
     <div className="absolute top-[8%] left-[40%]">
       <div className="bg-white w-[450px] h-[650px] p-5 rounded-lg">
@@ -55,17 +60,18 @@ function Newproduct() {
         
         <div>
           <form
-            action=""
+            action="#"
             className="flex flex-col gap-3 poppins-5 text-[#48505E] text-sm"
           >
             <div className="flex justify-between items-center">
               <label htmlFor="prodName">Product Name</label>
               <input
                 type="text"
-                id="proName"
+                id="prodName"
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter product name"
+                name="productName"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -76,6 +82,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter product id"
+                name="productID"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -86,6 +93,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter product category"
+                name="productCategory"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -96,6 +104,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter buying price"
+                name="productPrice"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -106,6 +115,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter quantity"
+                name="productQty"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -116,6 +126,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter product unit"
+                name="productUnit"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -126,6 +137,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="DD/MM/YY"
+                name="productExpiry"
               />
             </div>
             <div className="flex justify-between items-center">
@@ -136,6 +148,7 @@ function Newproduct() {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter threshold value"
+                name="productThresholdValue"
               />
             </div>
 

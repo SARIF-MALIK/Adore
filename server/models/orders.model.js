@@ -4,6 +4,7 @@ const orderSchema  = new mongoose.Schema({
         type:String,
         required:true,
         trim:true,
+        unique:true,
     },
     qty:{
         type:Number,
@@ -31,4 +32,4 @@ const orderSchema  = new mongoose.Schema({
     },
 })
 
-export default mongoose.model('order', orderSchema); 
+export default mongoose.model('Order', orderSchema); 

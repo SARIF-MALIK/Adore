@@ -1,19 +1,24 @@
 import mongoose, { Mongoose } from "mongoose"
 
-const consumerSchema = new mongoose.model({
+const consumerSchema = new mongoose.Schema({
     consumerName:{
         type:String, 
         required:true, 
         trim:true,
+        lowercase: true,
     },
     qty:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Inventory'
+        type: Number,
+        required: true,
     },
     product:{
-        type: Mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'Product'
     },
+    punchedBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 export default mongoose.model("consumer", consumerSchema);  

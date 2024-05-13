@@ -1,10 +1,11 @@
 import mongoose, { mongo } from "mongoose"
 
-const supplierSchema = new mongoose.model({
+const supplierSchema = new mongoose.Schema({
     supplierName:{
         type:String, 
         required:true, 
         trim:true,
+        lowercase:true,
     },
     supplierImg:{
         type:String,
@@ -33,8 +34,10 @@ const supplierSchema = new mongoose.model({
     ], 
     product:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Product',
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'Product',
+            },
             price:{
               type:Number,      
             },

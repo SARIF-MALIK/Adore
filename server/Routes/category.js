@@ -3,6 +3,18 @@ import CategoryModel from "../models/category.model.js";
 
 const router = express.Router();
 
+// user must already signIn and have access as per role 
+
+router.get("/getall-categories", async(req, res)=>{
+  const categoryObj = await CategoryModel.find({});
+  const categoryArr = categoryObj.map(item=>{
+    return (
+      item.category
+    )
+  })
+  res.send(categoryArr); 
+})
+
 router.post("/create-category", async (req, res) => {
   try {
     const categoryName = req.body.category.toLowerCase();
