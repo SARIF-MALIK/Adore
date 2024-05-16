@@ -167,5 +167,7 @@ const CategoryInfo = () => {
         </div>
     );
 };
+    );
+};
 
 export default CategoryInfo;
