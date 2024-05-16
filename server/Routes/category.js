@@ -7,12 +7,13 @@ const router = express.Router();
 
 router.get("/getall-categories", async(req, res)=>{
   const categoryObj = await CategoryModel.find({});
-  const categoryArr = categoryObj.map(item=>{
-    return (
-      item.category
-    )
-  })
-  res.send(categoryArr); 
+  res.send(categoryObj); 
+  // const categoryArr = categoryObj.map(item=>{
+  //   return (
+  //     item.category
+  //   )
+  // })
+  // res.send(categoryArr); 
 })
 
 router.post("/create-category", async (req, res) => {
