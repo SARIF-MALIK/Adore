@@ -5,6 +5,11 @@ import productsModel from "../models/products.model.js";
 
 const router = express.Router();
 
+router.get("/getall-product", async (req, res) => {
+  const productObj = await productsModel.find({}).populate('category');
+  res.send(productObj);
+});
+
 router.post("/add-product", async (req, res) => {
   try {
     const { productName, productID, category, productImg } = req.body;
