@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post("/add-product", async (req, res) => {
   try {
-    const { productName, productID, prodCategory, prodImg } = req.body;
+    const { productName, productID, category, productImg } = req.body;
+    // console.log(req.body); 
     const isExist = await ProductModel.findOne({ productID: productID });
     if (isExist) {
       return res.status(409).send({
@@ -16,17 +17,16 @@ router.post("/add-product", async (req, res) => {
       });
     }
     const categoryObjId = await categoryModel.findOne({
-      category: prodCategory,
+      category
     });
-    // console.log(prodCategory, prodImg);
     const newEntry = await ProductModel.create({
       productName,
       productID,
-      productImg: prodImg,
+      productImg,
       category: categoryObjId._id,
     });
-    // const data = await ProductModel.findOne(newEntry).populate('category');
-    // console.log(data)
+    const data = await ProductModel.findOne(newEntry).populate('category');
+    console.log(data)
     res.status(201).send({
       success: true,
       msg: "product saved successfully",

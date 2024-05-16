@@ -24,7 +24,7 @@ const Product = () => {
             </div>
             <div>
                 {
-                    toggle && <AddProduct />
+                    toggle && <AddProduct toggle={toggle} setToggle={setToggle}/>
                 }
             </div>
         </div>

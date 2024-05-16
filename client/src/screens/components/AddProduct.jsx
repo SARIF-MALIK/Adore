@@ -3,7 +3,7 @@ import axios from "axios";
 import { resizeImage } from "../components/ResizeImg";
 import { useNavigate } from "react-router-dom";
 
-const AddProduct = () => {
+const AddProduct = ({ toggle, setToggle }) => {
     const [image, setImage] = useState(null);
     const [previewUrl, setPreviewURL] = useState("");
     const fileInput = useRef(null);
@@ -102,11 +102,9 @@ const AddProduct = () => {
     
       const handleChange = (e) => {
         const { name, value } = e.target;
-        // If the field is "category", split the value by comma
-        const updatedValue = name === "categoryArr" ? value.trim().split(",") : value;
         setFormData((prevFormData) => ({
           ...prevFormData,
-          [name]: updatedValue,
+          [name]: value,
         }));
       };
     
@@ -127,24 +125,20 @@ const AddProduct = () => {
     
         try {
           // console.log(formData);
-          const response = await axios.post('http://localhost:8080/api/v1/supplier/add-supplier/', { ...formData, supplierImg: imgUrl });
+          const response = await axios.post('http://localhost:8080/api/v1/product/add-product', { ...formData, productImg: imgUrl });
           console.log(response.data); // Log response from backend
           // Reset form fields and state
           setFormData({
-            supplierName: '',
-            product: '',
-            category: '',
-            price: '',
-            contact: '',
-            email: '',
-            type: '' // Reset type to default value
+            productName: "",
+            productID: "",
+            category: "",
           });
           setImage(null);
           setPreviewURL('');
         } catch (error) {
           console.error("Error:", error);
         } finally {
-          navigate('/suppliers')
+          navigate('/product')
           setToggle(!toggle)
         }
     
@@ -161,7 +155,7 @@ const AddProduct = () => {
                             <div
                                 className="drag w-[81px] h-[81px] border-2 border-dashed rounded-lg overflow-hidden object-cover"
                                 onDragOver={handleOndragOver}
-                                onDrop={handleOnDrop}
+                                onDrop={handleOndrop}
                                 onClick={e => handleFile(e.target.files[0])}
                             >
                                 {previewUrl && (
@@ -170,13 +164,12 @@ const AddProduct = () => {
                                     </div>
                                 )}
                             </div>
-                            {previewUrl && <span>{image.name}</span>}
                         </div>
 
                         <div className="flex flex-col items-center poppins-4 text-[#858D9D] text-sm">
                             <p>Drag image here</p>
                             <p>or</p>
-                            <label htmlFor="imageInput" className="text-[#448DF2] hover:cursor-pointer">Browse image abc</label>
+                            <label htmlFor="imageInput" className="text-[#448DF2] hover:cursor-pointer">Browse image</label>
                             <input
                                 type="file"
                                 accept='image/*' hidden
@@ -188,21 +181,23 @@ const AddProduct = () => {
                     </div>
 
                     <div className="mt-4 mb-7">
-                        <label for="username" className=" text-base mb-2">Product Name </label>
-                        <input type="text" id="username" className=" float-right ml-6 border rounded-lg text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter product name" />
+                        <label htmlFor="username" className=" text-base mb-2">Product Name </label>
+                        <input value={formData.productName}
+                    onChange={handleChange} name="productName" type="text" id="username" className=" float-right ml-6 border rounded-lg text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter product name" />
                     </div>
                     <div className="mt-3 mb-7">
-                        <label for="username" className=" text-base mb-2">Product Id</label>
-                        <input type="text" id="username" className="float-right ml-6 border rounded-lg text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Product Id" />
+                        <label htmlFor="username" className=" text-base mb-2">Product Id</label>
+                        <input value={formData.productID}
+                    onChange={handleChange} name="productID" type="text" id="username" className="float-right ml-6 border rounded-lg text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Product Id" />
                     </div>
-                    <div className="mt-3 mb-7">
+                    <div className="mt-3 mb-7 flex justify-between items-center">
                     {categoriesDB && (
                 <>
                   <label htmlFor="category">Category</label>
                   <input
                     type="text"
                     id="category"
-                    name="categoryArr"
+                    name="category"
                     className="border-2 rounded-lg h-8 border-1 outline-none border-[#D0D5DD] p-2"
                     placeholder="Select product category"
                     value={formData.category}
@@ -223,8 +218,8 @@ const AddProduct = () => {
               )}
                       </div>
                     <div className="flex  justify-end pt-3 poppins-5 text-sm text-[#48505E] gap-3">
-                        <button className="btn">Discard</button>
-                        <button className="btn bg-[#1366D9] text-white">
+                        <button className="btn" onClick={()=>{setToggle(!toggle)}}>Discard</button>
+                        <button className="btn bg-[#1366D9] text-white" onClick={handleSubmit}>
                             Add Product
                         </button>
                     </div>
