@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ConsumerData } from './Data'
 
-const ConsumerInfo = () => {
+const ConsumerInfo = ({ toggle, setToggle }) => {
     const [pageIndex, setPageIndex] = useState(0);
     const ConsumerPerPage = 13;
     const startIndex = pageIndex * ConsumerPerPage;
@@ -23,6 +23,14 @@ const ConsumerInfo = () => {
             <div className="header flex justify-between items-center">
                 <div>
                     <h1 className="poppins-5 text-lg py-5">Consumers </h1>
+                </div>
+                <div className="flex gap-3">
+                    <button
+                        className="btn bg-[#1366D9] text-white"
+                        onClick={() => setToggle(!toggle)}
+                    >
+                        Add Consumer
+                    </button>
                 </div>
             </div>
             <div>
