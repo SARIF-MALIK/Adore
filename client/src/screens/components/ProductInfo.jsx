@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ProductData } from "./Data";
+// import { ProductData } from "./Data";
+import axios from "axios"
 
 const ProductInfo = ({toggle, setToggle}) => {
     const [pageIndex, setPageIndex] = useState(0);
-    const ProductPerPage = 13;
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [ProductData, setProductData] = useState([]);
+
+    const ProductPerPage = 7;
     const startIndex = pageIndex * ProductPerPage;
     const endIndex = (pageIndex + 1) * ProductPerPage;
     const VisibleProduct = ProductData.slice(startIndex, endIndex);
     const totalPages = Math.ceil(ProductData.length / ProductPerPage);
 
-
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+          const res = await axios.get('http://localhost:8080/api/v1/product/getall-product');
+          console.log(res.data)
+          setProductData(res.data);
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+      useEffect(() => {
+        fetchData();
+      }, []);
 
     const handleNextClick = () => {
         if (pageIndex < totalPages - 1) setPageIndex(pageIndex + 1);
@@ -18,12 +38,13 @@ const ProductInfo = ({toggle, setToggle}) => {
     const handlePrevClick = () => {
         if (pageIndex > 0) setPageIndex(pageIndex - 1);
     };
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
     return (
         <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
             <div className="header flex justify-between items-center">
                 <div>
                     <h1 className="poppins-5 text-lg py-5">Products Information</h1>
-                    <h1 className="poppins-5 text-lg py-5">Products</h1>
                 </div>
                 <div className="flex gap-3">
                     <button
@@ -46,15 +67,15 @@ const ProductInfo = ({toggle, setToggle}) => {
                     </tr>
 
                     {
-                        VisibleProduct.slice(0, 8).map(item => {
+                        VisibleProduct.map(item => {
                             return (
                                 <tr className="poppins-5 text-sm border-t-2 h-20">
-                                    <td>{item.productname}</td>
-                                    <td>{item.productId}</td>
-                                    <td>{item.category}</td>
+                                    <td>{item.productName}</td>
+                                    <td>{item.productID}</td>
+                                    <td>{item.category.category}</td>
                                     <td className="text-[#10A760]">
                                         <div className="drag w-[80px] h-[80px] border-2 border-dashed rounded-lg p-2 border-[#9D9D9D]">
-                                            <img src="" alt="img" />
+                                            <img src={item.productImg} alt="img" />
                                         </div>
                                     </td>
                                 </tr>
