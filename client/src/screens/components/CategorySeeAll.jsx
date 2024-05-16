@@ -16,7 +16,7 @@ const CategorySeeAll = () => {
                 <div>
                     <CategorySeeAll2 />
                 </div>
-
+     
             </div>
         </div>
 
