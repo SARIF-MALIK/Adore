@@ -1,67 +1,42 @@
-// import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { CategoryData } from './Data'
-// import axios from 'axios';
-
-// const CategoryInfo = ({ toggle, setToggle }) => {
-//     return (
-//         <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
-//             <div className="header flex justify-between items-center">
-//                 <div>
-//                     <h1 className="poppins-5 text-lg py-5">Category</h1>
-//                 </div>
-//                 <div className="flex gap-3">
-//                     <button
-//                         className="btn bg-[#1366D9] text-white"
-//                         onClick={() => setToggle(!toggle)}
-//                     >
-//                         Add Category
-//                     </button>
-//                 </div>
-//             </div>
-//             <div>
-//                 <table className="text-[#667085] w-full">
-//                     <tr className="h-10"
-//                     >
-//                         <th className="poppins-4 text-sm text-start">Name</th>
-//                         <th className="poppins-4 text-sm text-start"> ID</th>
-//                     </tr>
-
-//                     {
-//                         CategoryData.slice(0, 8).map(item => {
-//                             return (
-//                                 <tr className="poppins-5 text-sm border-t-2 h-16">
-//                                     <td>{item.name}</td>
-//                                     <td>{item.id}</td>
-//                                 </tr>
-//                             )
-//                         })
-//                     }
-//                 </table>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default CategoryInfo;
-
-import React, { useState } from 'react';
-import { CategoryData } from './Data';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+// import { CategoryData } from './Data';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const CategoryInfo = () => {
     const [editIndex, setEditIndex] = useState(-1);
     const [createMode, setCreateMode] = useState(false);
     const [newCategoryName, setNewCategoryName] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { id } = useParams();
+    const [CategoryData, setCategoryData] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:8080/api/v1/category/getall-categories')
+            setCategoryData(response.data)
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+        // console.log(response.data)
+    }
 
     const handleEdit = (index) => {
         setEditIndex(index);
     };
 
-    const handleDelete = (index) => {
-        // Implement delete functionality here
-        console.log(index); 
-    };
+    // const handleDelete = (index) => {
+    //     // Implement delete functionality here
+    // };
 
     const handleCreate = () => {
         setCreateMode(true);
@@ -90,6 +65,25 @@ const CategoryInfo = () => {
         // Implement edit functionality here
         setEditIndex(-1);
     };
+
+    const handleDelete = (index) => {
+        setLoading(true);
+        console.log(index)
+        // axios
+        //     .delete(`http://localhost:8080/api/v1/category/delete-category/${id}`)
+        //     .then(() => {
+        //         setLoading(false);
+        //         navigate("/");
+        //     })
+        //     .catch((error) => {
+        //         setLoading(false);
+        //         alert("Error Occured");
+        //         console.log(error);
+        //     });
+    };
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
 
     return (
         <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
@@ -128,20 +122,20 @@ const CategoryInfo = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {CategoryData.slice(0, 8).map((item, index) => (
+                        {CategoryData.map((item, index) => (
                             <tr key={index} className="poppins-5 text-sm border-t-2 h-16">
                                 <td>
                                     {editIndex === index ? (
                                         <input
                                             type="text"
-                                            value={item.name}
+                                            value={item.category}
                                             onChange={(e) => {
                                                 // Implement onChange for edit field
                                             }}
                                             className="poppins-4 text-sm border border-gray-300 rounded-md px-2 py-1"
                                         />
                                     ) : (
-                                        item.name
+                                        item.category
                                     )}
                                 </td>
                                 <td>
@@ -159,7 +153,7 @@ const CategoryInfo = () => {
                                             <button onClick={() => handleEdit(index)} className="btn poppins-4 text-sm text-blue-500 mr-2">
                                                 Edit
                                             </button>
-                                            <button onClick={ () => handleDelete(index)} className="btn poppins-4 text-sm text-red-500">
+                                            <button onClick={() => handleDelete(item._id)} className="btn poppins-4 text-sm text-red-500">
                                                 Delete
                                             </button>
                                         </>
@@ -173,5 +167,7 @@ const CategoryInfo = () => {
         </div>
     );
 };
+//     );
+// };
 
 export default CategoryInfo;

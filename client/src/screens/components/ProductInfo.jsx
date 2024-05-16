@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductData } from "./Data";
 
-const ProductInfo = () => {
+const ProductInfo = ({toggle, setToggle}) => {
     const [pageIndex, setPageIndex] = useState(0);
     const ProductPerPage = 13;
     const startIndex = pageIndex * ProductPerPage;
@@ -23,7 +23,17 @@ const ProductInfo = () => {
             <div className="header flex justify-between items-center">
                 <div>
                     <h1 className="poppins-5 text-lg py-5">Products Information</h1>
+                    <h1 className="poppins-5 text-lg py-5">Products</h1>
                 </div>
+                <div className="flex gap-3">
+                    <button
+                        className="btn bg-[#1366D9] text-white"
+                        onClick={() => setToggle(!toggle)}
+                    >
+                        Add Product
+                    </button>
+                </div>
+
             </div>
             <div>
                 <table className="text-[#667085] w-full">
@@ -43,10 +53,10 @@ const ProductInfo = () => {
                                     <td>{item.productId}</td>
                                     <td>{item.category}</td>
                                     <td className="text-[#10A760]">
-                  <div className="drag w-[80px] h-[80px] border-2 border-dashed rounded-lg p-2 border-[#9D9D9D]">
-                    <img src="" alt="img" />
-                  </div>
-                </td>
+                                        <div className="drag w-[80px] h-[80px] border-2 border-dashed rounded-lg p-2 border-[#9D9D9D]">
+                                            <img src="" alt="img" />
+                                        </div>
+                                    </td>
                                 </tr>
                             )
                         })

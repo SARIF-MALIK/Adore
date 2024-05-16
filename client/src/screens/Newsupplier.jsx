@@ -18,14 +18,18 @@ function Newsupplier({ toggle, setToggle }) {
     price: "",
   });
   const [categoriesDB, setCategoriesDB] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchCategoriesDB = async () => {
       try {
         const response = await axios.get(
           "http://localhost:8080/api/v1/category/getall-categories"
         );
-        setCategoriesDB(response.data);
+        const categoryArr = response.data.map((item) => {
+          return item.category;
+        });
+        // res.send(categoryArr);
+        setCategoriesDB(categoryArr);
         console.log(response.data);
       } catch (error) {
         console.log("error in fetching categories from database", error);
@@ -87,7 +91,7 @@ function Newsupplier({ toggle, setToggle }) {
     // reduce img width and height which auto return base64 in setImage
     await new Promise((resolve) => {
       resizeImage(file, 300, 300, "JPEG", 70, 0, "base64", setImage)
-        resolve('done')
+      resolve('done')
     });
     // await resizeImage(file, 300, 300, "JPEG", 70, 0, "base64", setImage)
 
@@ -126,21 +130,21 @@ function Newsupplier({ toggle, setToggle }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     // If the field is "category", split the value by comma
-  const updatedValue = name === "categoryArr" ? value.trim().split(",") : value;
-  setFormData((prevFormData) => ({
-    ...prevFormData,
-    [name]: updatedValue.toLowerCase(),
-  }));
+    const updatedValue = name === "categoryArr" ? value.trim().split(",") : value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: updatedValue,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log('image in react state hook', image);
-    let imgUrl = ''; 
+    let imgUrl = '';
     if (image) {
       try {
         const res = await imgUpload();
-        imgUrl = res.url; 
+        imgUrl = res.url;
         // console.log(res.url);
       } catch (error) {
         console.error("Error uploading image:", error);
@@ -148,29 +152,29 @@ function Newsupplier({ toggle, setToggle }) {
       // console.log(formData); 
     }
 
-      try {
-        // console.log(formData);
-        const response = await axios.post('http://localhost:8080/api/v1/supplier/add-supplier/', {...formData, supplierImg: imgUrl});
-        console.log(response.data); // Log response from backend
-        // Reset form fields and state
-        setFormData({
-          supplierName: '',
-          product: '',
-          category: '',
-          price: '',
-          contact: '',
-          email: '',
-          type: '' // Reset type to default value
-        });
-        setImage(null);
-        setPreviewURL('');
-      } catch (error) {
-        console.error("Error:", error);
-      }finally{
-        navigate('/suppliers')
-        setToggle(!toggle)
-      }
-    
+    try {
+      // console.log(formData);
+      const response = await axios.post('http://localhost:8080/api/v1/supplier/add-supplier/', { ...formData, supplierImg: imgUrl });
+      console.log(response.data); // Log response from backend
+      // Reset form fields and state
+      setFormData({
+        supplierName: '',
+        product: '',
+        category: '',
+        price: '',
+        contact: '',
+        email: '',
+        type: '' // Reset type to default value
+      });
+      setImage(null);
+      setPreviewURL('');
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      navigate('/suppliers')
+      setToggle(!toggle)
+    }
+
   };
 
   return (
@@ -280,10 +284,10 @@ function Newsupplier({ toggle, setToggle }) {
                   />
                   <datalist id="categoryList">
                     {categoriesDB.map((item) => {
-                      return(
-                      <option key={item} value={item}>
-                        {item.value}
-                      </option>
+                      return (
+                        <option key={item} value={item}>
+                          {item.value}
+                        </option>
                       )
                     })}
                   </datalist>
@@ -346,7 +350,7 @@ function Newsupplier({ toggle, setToggle }) {
 
             {/* Form Buttons */}
             <div className="flex  justify-end pt-3 poppins-5 text-sm text-[#48505E] gap-3">
-              <button type="button" className="btn"  onClick={() => setToggle(!toggle)}>
+              <button type="button" className="btn" onClick={() => setToggle(!toggle)}>
                 Discard
               </button>
               <button type="submit" className="btn bg-[#1366D9] text-white">
