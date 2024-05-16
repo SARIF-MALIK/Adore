@@ -13,7 +13,7 @@ const ConsumerInfo = ({ toggle, setToggle }) => {
     const endIndex = (pageIndex + 1) * ConsumerPerPage;
     const VisibleProduct = ConsumerData.slice(startIndex, endIndex);
     const totalPages = Math.ceil(ConsumerData.length / ConsumerPerPage);
-
+    
     const fetchData = async () => {
         setLoading(true);
         try {
@@ -59,7 +59,7 @@ const ConsumerInfo = ({ toggle, setToggle }) => {
                 <table className="text-[#667085] w-full">
                     <tr className="h-10"
                     >
-                        <th className="poppins-4 text-sm text-start">Conusmer name</th>
+                        <th className="poppins-4 text-sm text-start">Consumer name</th>
                         <th className="poppins-4 text-sm text-start">Product </th>
                         <th className="poppins-4 text-sm text-start">Quantity picked</th>
                         <th className="poppins-4 text-sm text-start">Punched by</th>
@@ -69,10 +69,10 @@ const ConsumerInfo = ({ toggle, setToggle }) => {
                         VisibleProduct.map(item => {
                             return (
                                 <tr className="poppins-5 text-sm border-t-2 h-10">
-                                    <td><Link to="/inventory/productdetails/">{item.name}</Link></td>
-                                    <td>{item.product}</td>
-                                    <td>{item.quantity}</td>
-                                    <td className="text-[#10A760]">{item.punchedBy}</td>
+                                    <td><Link to="/inventory/productdetails/">{item.consumerName}</Link></td>
+                                    <td>{item.product.productName}</td>
+                                    <td>{item.qty}</td>
+                                    <td className="text-[#10A760]">{item.punchedBy.email}</td>
                                 </tr>
                             )
                         })

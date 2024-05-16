@@ -9,9 +9,9 @@ const router = express.Router();
 router.post("/add-consumer", async (req, res) => {
   try {
     const { consumerName, qtyPicked, productName, punchedBy } = req.body;
-    console.log(req.body);
+    // console.log('consumer at server',req.body);
     const product = await ProductModel.findOne({
-      productName: productName,
+      productName
     });
     if (!product) {
       return res.status(409).send({
@@ -21,7 +21,7 @@ router.post("/add-consumer", async (req, res) => {
     }
     // get the email of signed In user
     const punchedByUser = await userModel.findOne({
-      email: punchedBy.toLowerCase(),
+      name: punchedBy,
     });
     const inventory = await inventoryModel
       .findOne({ product: product._id })
@@ -39,7 +39,7 @@ router.post("/add-consumer", async (req, res) => {
     }
     inventory.qty -= qtyPicked;
     inventory.save();
-    console.log(inventory);
+    // console.log(inventory);
     const newEntry = await consumerModel.create({
       consumerName,
       qty: qtyPicked,
@@ -58,7 +58,8 @@ router.post("/add-consumer", async (req, res) => {
 });
 
 router.get("/getall-consumer", async (req, res) => {
-  const consumerObj = await consumerModel.find({});
+  const consumerObj = await consumerModel.find({}).populate('product').populate('punchedBy');
+  // console.log(consumerObj)
   res.send(consumerObj);
 });
 

@@ -30,6 +30,7 @@ const AddConsumers = ({toggle,setToggle}) => {
     };
     fetchproductDB();
   }, []);
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -58,7 +59,7 @@ const AddConsumers = ({toggle,setToggle}) => {
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      navigate('/consumer')
+      navigate('/consumers')
       setToggle(!toggle)
     }
 
