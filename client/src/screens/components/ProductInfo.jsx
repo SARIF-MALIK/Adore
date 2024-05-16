@@ -23,7 +23,6 @@ const ProductInfo = ({toggle, setToggle}) => {
             <div className="header flex justify-between items-center">
                 <div>
                     <h1 className="poppins-5 text-lg py-5">Products Information</h1>
-                    <h1 className="poppins-5 text-lg py-5">Products</h1>
                 </div>
                 <div className="flex gap-3">
                     <button
