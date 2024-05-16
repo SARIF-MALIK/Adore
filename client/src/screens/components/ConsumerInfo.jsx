@@ -1,15 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ConsumerData } from './Data'
+import axios from 'axios';
+// import { ConsumerData } from './Data'
 
 const ConsumerInfo = ({ toggle, setToggle }) => {
     const [pageIndex, setPageIndex] = useState(0);
-    const ConsumerPerPage = 13;
+    const [ConsumerData, setConsumerData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+    const ConsumerPerPage = 10;
     const startIndex = pageIndex * ConsumerPerPage;
     const endIndex = (pageIndex + 1) * ConsumerPerPage;
     const VisibleProduct = ConsumerData.slice(startIndex, endIndex);
     const totalPages = Math.ceil(ConsumerData.length / ConsumerPerPage);
 
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+          const res = await axios.get('http://localhost:8080/api/v1/consumer/getall-consumer');
+          setConsumerData(res.data);
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+      useEffect(() => {
+        fetchData();
+      }, []);
+    
+      if (loading) return <div>Loading...</div>;
+      if (error) return <div>Error: {error}</div>;
 
 
     const handleNextClick = () => {

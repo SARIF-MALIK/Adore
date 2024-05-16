@@ -23,7 +23,7 @@ const Consumers = () => {
             </div>
             <div>
                 {
-                    toggle && <AddConsumers />
+                    toggle && <AddConsumers toggle={toggle} setToggle={setToggle}  />
                 }
             </div>
         </div>
