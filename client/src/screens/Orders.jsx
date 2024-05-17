@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
-import PlaceOrder from "./PlaceOrder";
+import PlaceOrder from "./components/PlaceOrder";
 import { MdFilterList } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { OrdersData } from "./components/Data";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
-import Newsupplier from "./Newsupplier";
+import Newsupplier from "./components/Newsupplier";
 import { MdFilterList } from "react-icons/md";
 import { Link } from "react-router-dom";
 import axios from "axios";

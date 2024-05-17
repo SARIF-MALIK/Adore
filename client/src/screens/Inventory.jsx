@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
-import NewInventory from "./NewInventory";
 import { MdFilterList } from "react-icons/md";
 import { ProductsData } from "./components/Data";
+import AddInventory from "./components/AddInventory";
 
 function Inventory() {
   const [toggle, setToggle] = useState(false);
@@ -27,7 +27,7 @@ function Inventory() {
       </div>
       <div className="">
         {
-          toggle && <NewInventory toggle={toggle} setToggle={setToggle}/>
+          toggle && <AddInventory toggle={toggle} setToggle={setToggle}/>
         }
       </div>
     </div>

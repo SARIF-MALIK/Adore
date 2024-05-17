@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function NewInventory({ toggle, setToggle }) {
+function AddInventory({ toggle, setToggle }) {
   const [productData, setProductData] = useState({
     productName: "",
     qty: "",
@@ -120,4 +120,4 @@ function NewInventory({ toggle, setToggle }) {
   );
 }
 
-export default NewInventory;
+export default AddInventory;

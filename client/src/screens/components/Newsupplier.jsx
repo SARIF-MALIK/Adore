@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { LuUser2 } from "react-icons/lu";
 import axios from "axios";
-import { resizeImage } from "./components/ResizeImg";
+import { resizeImage } from "./ResizeImg";
 import { useNavigate } from "react-router-dom";
 
 function Newsupplier({ toggle, setToggle }) {
