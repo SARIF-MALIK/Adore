@@ -1,20 +1,60 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function AddInventory({ toggle, setToggle }) {
   const [productData, setProductData] = useState({
     productName: "",
-    qty: "",
-    expiryDate: "",
+    productQty: "",
+    expectedExpiry: "",
     thresholdValue: "",
     availability: "",
     boughtPrice: "",
   });
+  const [productDB, setProductDB] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchProductDB = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/v1/product/getall-product"
+        );
+        const productArr = response.data.map((item) => {
+          return item.productName;
+        });
+        // res.send(categoryArr);
+        setProductDB(productArr);
+        console.log(response.data);
+      } catch (error) {
+        console.log("error in fetching products from database", error);
+      }
+    };
+    fetchProductDB();
+  }, []);
   const inputChange = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault(); 
-    console.log(productData); 
+    try {
+      // console.log(formData);
+      const response = await axios.post('http://localhost:8080/api/v1/inventory/add-inventory/', { ...productData });
+      console.log(response.data); // Log response from backend
+      // Reset form fields and state
+      setProductData({
+        productName: "",
+        productQty: "",
+        expectedExpiry: "",
+        thresholdValue: "",
+        availability: "",
+        boughtPrice: "",
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      navigate('/inventory')
+      setToggle(!toggle)
+    }
   }
 
   return (
@@ -28,7 +68,10 @@ function AddInventory({ toggle, setToggle }) {
             className="flex flex-col gap-3 poppins-5 text-[#48505E] text-sm"
           >
             <div className="flex justify-between items-center">
+            {productDB && (
+                <>
               <label htmlFor="prodName">Product Name</label>
+             
               <input
                 type="text"
                 id="prodName"
@@ -38,7 +81,20 @@ function AddInventory({ toggle, setToggle }) {
                 name="productName"
                 onChange={inputChange}
                 value={productData.productName}
+                    list="productList"
+                    required
               />
+                  <datalist id="productList">
+                    {productDB.map((item) => {
+                      return (
+                        <option key={item} value={item}>
+                          {item.value}
+                        </option>
+                      )
+                    })}
+                  </datalist>
+                </>
+              )}
             </div>
             <div className="flex justify-between items-center">
               <label htmlFor="prodQty">Quantity</label>
@@ -48,9 +104,9 @@ function AddInventory({ toggle, setToggle }) {
                 className="border-2 rounded-lg h-8 border-1 outline-none border-[
 #D0D5DD] p-2"
                 placeholder="Enter quantity"
-                name="qty"
+                name="productQty"
                 onChange={inputChange}
-                value={productData.qty}
+                value={productData.productQty}
               />
             </div>
             <div className="flex justify-between items-center relative">
@@ -60,9 +116,9 @@ function AddInventory({ toggle, setToggle }) {
                 id="prodExp"
                 className="border-2 rounded-lg h-8 outline-none w-[200px] px-2"
                 placeholder="DD/MM/YY"
-                name="expiryDate"
+                name="expectedExpiry"
                 onChange={inputChange}
-                value={productData.expiryDate}
+                value={productData.expectedExpiry}
               />
             </div>
             <div className="flex justify-between items-center">

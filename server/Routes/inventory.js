@@ -4,6 +4,17 @@ import productsModel from "../models/products.model.js";
 
 const router = express.Router(); 
 
+router.get('/data-inventory',async (req, res)=>{
+  try {
+    const inventoryData = await inventoryModel.find({}).sort({ _id: -1 }).populate('product');
+    console.log(inventoryData); 
+    res.send(inventoryData); 
+  } catch (error) {
+    console.log(error); 
+    res.send(error);     
+  }
+})
+
 router.post("/add-inventory", async(req, res)=>{
 try {
     const {productName, productQty, expectedExpiry, thresholdValue, availability, boughtPrice} = req.body; 
