@@ -74,7 +74,7 @@ const ProductInfo = ({toggle, setToggle}) => {
                                     <td>{item.productID}</td>
                                     <td>{item.category.category}</td>
                                     <td className="text-[#10A760]">
-                                        <div className="drag w-[80px] h-[80px] border-2 border-dashed rounded-lg p-2 border-[#9D9D9D]">
+                                        <div className="drag w-[80px] h-[80px] rounded-lg p-2 border-[#9D9D9D]">
                                             <img src={item.productImg} alt="img" />
                                         </div>
                                     </td>

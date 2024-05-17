@@ -27,10 +27,10 @@ function Products({ toggle , setToggle}) {
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
         <div>
-          <h1 className="poppins-5 text-lg py-5">Products</h1>
+          <h1 className="poppins-5 text-lg py-5">Inventory</h1>
         </div>
         <div className="flex gap-3">
-          <button className="btn bg-[#1366D9] text-white" onClick={()=>setToggle(!toggle)}>Add Product</button>
+          <button className="btn bg-[#1366D9] text-white" onClick={()=>setToggle(!toggle)}>Add Inventory</button>
           <button className="btn flex items-center justify-center gap-2">
             {" "}
             <MdFilterList size={22} />

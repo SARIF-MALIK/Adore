@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Products from "./components/Products";
 import Overall from "./components/Overall";
-import Newproduct from "./Newproduct";
+import NewInventory from "./NewInventory";
 
 function Inventory() {
   const [toggle, setToggle] = useState(false);
@@ -26,7 +26,7 @@ function Inventory() {
       </div>
       <div className="">
         {
-          toggle && <Newproduct />
+          toggle && <NewInventory toggle={toggle} setToggle={setToggle}/>
         }
       </div>
     </div>
@@ -34,3 +34,6 @@ function Inventory() {
 }
 
 export default Inventory;
+
+
+
