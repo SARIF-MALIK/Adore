@@ -21,5 +21,5 @@ const consumerSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model("consumer", consumerSchema);  
+export default mongoose.model("Consumer", consumerSchema);  
  

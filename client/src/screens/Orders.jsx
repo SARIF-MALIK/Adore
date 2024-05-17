@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Overall from "./components/Overall";
 import PlaceOrder from "./components/PlaceOrder";
 import { MdFilterList } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { OrdersData } from "./components/Data";
+import axios from "axios"
+// import { OrdersData } from "./components/Data";
 
 function Orders() {
   const [toggle, setToggle] = useState(false);
@@ -41,6 +42,9 @@ export default Orders
 
 function Order({ toggle, setToggle }) {
   const [pageIndex, setPageIndex] = useState(0);
+  const [OrdersData, setOrdersData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const entryPerPage = 10;
   const startIndex = pageIndex * entryPerPage;
   const endIndex = (pageIndex + 1) * entryPerPage;
@@ -55,7 +59,29 @@ function Order({ toggle, setToggle }) {
     if (pageIndex > 0)
       setPageIndex(pageIndex - 1)
   }
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get('http://localhost:8080/api/v1/order/data-order');
+      if (Array.isArray(res.data)) {
+        setOrdersData(res.data);
+      } else {
+        console.log(res.data);
+        throw new Error('Data is not in expected format');
+      }
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <div className="w-full bg-white rounded-lg px-5 overflow-y-auto py-4">
       <div className="header flex justify-between items-center">
@@ -93,13 +119,13 @@ function Order({ toggle, setToggle }) {
               <tr className="poppins-5 text-sm border-t-2 h-10">
                 <td>
                   <Link to="/inventory/productdetails/">
-                    {order.productName}
+                    {order.product.productName}
                   </Link>
                 </td>
-                <td>{order.orderValue}</td>
+                <td>{order.unitPrice}</td>
                 <td>{order.qty}</td>
-                <td>{order.orderId}</td>
-                <td>{order.expectedDelivery}</td>
+                <td>{order.orderID}</td>
+                <td>{new Date(order.expectedDelivery).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })}</td>
                 <td
                   className={`${order.status == "Delayed"
                     ? "text-[#F79009]"

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/data-inventory',async (req, res)=>{
   try {
     const inventoryData = await inventoryModel.find({}).sort({ _id: -1 }).populate('product');
-    console.log(inventoryData); 
+    // console.log(inventoryData); 
     res.send(inventoryData); 
   } catch (error) {
     console.log(error); 
