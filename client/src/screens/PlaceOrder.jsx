@@ -1,7 +1,7 @@
 import React from 'react'
 import { LuUser2 } from "react-icons/lu";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ toggle, setToggle }) => {
     return (
         <form id="form" action="" className='absolute  left-[40%]'>
             <div className=" flex justify-center items-center rounded-lg h-screen top-[122px] left-96">
@@ -32,7 +32,7 @@ const PlaceOrder = () => {
                         <input type="text" id="username" className="float-right ml-6 border rounded-lg text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter status" />
                     </div>
                     <div className="flex  justify-end pt-3 poppins-5 text-sm text-[#48505E] gap-3">
-                        <button className="btn">Discard</button>
+                        <button className="btn" onClick={()=>setToggle(!toggle)}>Discard</button>
                         <button className="btn bg-[#1366D9] text-white">
                             Add Product
                         </button>
