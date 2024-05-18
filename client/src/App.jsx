@@ -16,6 +16,7 @@ import SupplierDetails from './screens/components/SupplierDetails'
 import Consumers from './screens/Consumers'
 import Product from './screens/Product'
 import Category from './screens/Category'
+import Setting from './screens/Setting'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/branch' element={<ManageBranch />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/settings' element={<Setting />} />
         </Routes>
       </Router>
     </>
