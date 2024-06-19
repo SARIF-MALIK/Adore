@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.post("/add-user", async (req, res) => {
   try {
-    const { userName, email, password, role,userImg } = req.body;
+    const { name, email, password} = req.body;
+    console.log(req.body)
     const isExist = await userModel.findOne({ email });
     if (isExist) {
       return res.status(409).send({
@@ -13,8 +14,44 @@ router.post("/add-user", async (req, res) => {
         msg: "user already exists",
       });
     }
-    const newUser = new userModel({name: userName, email, password, role, userImg}); 
+    const newUser = new userModel({name, email, password}); 
     newUser.save(); 
+    return res.status(200).send({
+      success: true,
+      msg: "user created successfully",
+    });
+    
+  } catch (error) {
+    console.log(error);
+        res.status(500).send({
+          success: false,
+          error,
+          message: "Error while creating user",
+        });
+  }
+});
+
+router.post("/login-user", async (req, res) => {
+  try {
+    const { email, password} = req.body;
+    const isExist = await userModel.findOne({ email });
+    if (!isExist) {
+      return res.status(409).send({
+        success: false,
+        msg: "user not exists",
+        });
+        }
+        console.log(isExist)
+    if(isExist.password !== password)
+    return res.status(400).send({
+      success: false,
+      msg: "invalid credentials",
+    });
+    return res.status(200).send({
+      success: true,
+      msg: "user logged in successfully",
+    });
+    
   } catch (error) {
     console.log(error);
         res.status(500).send({

@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 
 const SignUp = () => {
@@ -11,24 +12,18 @@ const SignUp = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // console.log(creden)
+        const response = await axios.post("http://localhost:8080/api/v1/user/add-user",
+           { email: creden.email, password: creden.password, name: creden.name },
+        );
+        
+        console.log(response);
 
-        const response = await fetch("#", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email: creden.email, password: creden.password }),
-        });
-        const json = await response.json();
-        console.log(json);
-
-        if (!json.success) {
+        if (!response.data.success) {
             alert("Enter valid Credentials");
         }
-        if (json.success) {
+        if (response.data.success) {
             localStorage.setItem("userEmail", creden.email);
-            localStorage.setItem("authToken", json.authToken);
-            console.log(localStorage.getItem("authToken"));
             navigate("/");
         }
     };
@@ -109,18 +104,18 @@ const SignUp = () => {
                         className="btn bg-[#1366D9] text-white poppins-5  w-full rounded-md mt-5 p-2"
                     >
 
-                        <Link to="/dashboard" className="">
+                        
                             Get Started
-                        </Link>
+                        
                     </button>
                     <button
                         type="submit"
                         className="btn border-2 p-1 poppins-5 text-sm  w-full rounded-lg mt-3 font-medium text-[#48505E] "
                     >
-                        <Link to="/dashboard" className="">
+                        
                             <FcGoogle className="inline mr-2" size={24} />
                             Sign up with Google
-                        </Link>
+                        
                     </button>
                     <div class="register-link poppins-4 text-sm flex justify-center gap-1 mt-5 text-[#667085]">
                         <p>

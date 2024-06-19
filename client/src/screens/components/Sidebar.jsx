@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IoHomeOutline } from "react-icons/io5";
 import { LiaLuggageCartSolid } from "react-icons/lia";
 import { IoIosStats, IoMdPerson } from "react-icons/io";
@@ -15,6 +15,11 @@ import { RiProductHuntLine } from "react-icons/ri";
 
 
 function Sidebar() {
+  const navigate = useNavigate(); 
+  const handleLogout = () => {
+    localStorage.clear(); // Clear local storage
+    navigate('/')
+  };
   return (
     <div className='flex flex-col h-full w-full justify-between p-5 border rounded-e-lg bg-white'>
       <ul className='poppins-5 flex flex-col'>
@@ -33,8 +38,10 @@ function Sidebar() {
       <div>
         <ul className='poppins-5'>
           <NavLink to='/settings' className='flex my-5 gap-3 md:mx-3 cursor-pointer' activeClassName='text-[#1570EF]'><CiSettings size={24} />Settings</NavLink>
-          <NavLink exact to='/' className='flex my-5 gap-3 md:mx-3 cursor-pointer' activeClassName='text-[#1570EF]'><IoIosLogOut size={24} />Log Out</NavLink>
-        </ul>
+          <div onClick={handleLogout} className='flex my-5 gap-3 md:mx-3 cursor-pointer'>
+            <IoIosLogOut size={24} />Log Out
+          </div>
+          </ul>
       </div>
     </div>
   );

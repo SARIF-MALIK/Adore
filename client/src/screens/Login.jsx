@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 function Login() {
   const [creden, setCreden] = useState({ email: "", password: "" });
@@ -11,24 +12,20 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("#", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: creden.email, password: creden.password }),
-    });
-    const json = await response.json();
-    console.log(json);
+    const response = await axios.post("http://localhost:8080/api/v1/user/login-user",
+      { email: creden.email, password: creden.password },
+    );
+    
+    console.log(response);
 
-    if (!json.success) {
+    if (!response.data.success) {
       alert("Enter valid Credentials");
     }
-    if (json.success) {
+    if (response.data.success) {
       localStorage.setItem("userEmail", creden.email);
-      localStorage.setItem("authToken", json.authToken);
+      localStorage.setItem("authToken", response.authToken);
       console.log(localStorage.getItem("authToken"));
-      navigate("/");
+      navigate("/dashboard");
     }
   };
   return (
@@ -90,9 +87,9 @@ function Login() {
             className="btn bg-[#1366D9] text-white poppins-5  w-full rounded-lg mt-5"
           >
             
-            <Link to="/dashboard" className="">
+            
               Sign in
-            </Link>
+            
           </button>
           <button
             type="submit"
